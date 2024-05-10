@@ -35,7 +35,7 @@ public class Loja {
             return 'P';
         } else if (quantidadeFuncionarios >= 10 && quantidadeFuncionarios <= 30){
             return 'M';
-        } else if (quantidadeFuncionarios > 31) {
+        } else if (quantidadeFuncionarios >= 31) {
             return 'G';
         } else {
             return ' ';
