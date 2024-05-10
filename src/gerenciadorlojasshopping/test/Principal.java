@@ -29,8 +29,20 @@ public class Principal {
                             Teclado.leInt("Digite o salário base dos funcionários: "));
                     break;
                 case 2:
-                    produto = new Produto(Teclado.leString("Digite o nome do produto: "),
-                            Teclado.leInt("Digite o preço do produto: "));
+                    String nomeProduto = Teclado.leString("Digite o nome da Produto: ");
+                    int precoProduto = Teclado.leInt("Digite o preço do produto");
+
+                    System.out.println("Informe dia, mês e ano de validade do produto (dd mm aaaa)");
+                    int dia = Teclado.leInt();
+                    int mes = Teclado.leInt();
+                    int ano = Teclado.leInt();
+                    Data dataValidade = new Data(dia, mes, ano);
+
+                    produto = new Produto(nomeProduto, precoProduto, dataValidade);
+
+                    System.out.println("Informações cadastradas no sistema!+" +
+                            "\nProduto: "+produto.getNome()+"\nPreço:"+produto.getPreco()+
+                            "\nData Validade:"+produto.getDataValidade());
                     break;
                 case 3:
                     System.out.println("\nVocê saiu do menu!");
