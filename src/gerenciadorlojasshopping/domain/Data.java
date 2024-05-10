@@ -7,8 +7,18 @@ public class Data {
         this.dia = dia;
         this.mes = mes;
         this.ano = ano;
+        if (dia == 31 && mes == 2 || dia == 31 && mes == 4 || dia == 31 && mes == 6 ||
+                dia == 31 && mes == 9 || dia == 31 && mes == 11) {
+            System.out.println("Erro: o mês preenchido não pode ter 31 dias.");
+            this.dia = 1;
+            this.mes = 1;
+            this.ano = 2000;
+        }
         if (dia == 29 && mes == 2 && verificaAnoBissexto() == false){
-            System.out.println("Erro: não é possível haver 29/02, pois o ano não pe bissexto");
+            System.out.println("Erro: não é possível haver 29/02, pois o ano não é bissexto");
+            this.dia = 1;
+            this.mes = 1;
+            this.ano = 2000;
         }
     }
     @Override
