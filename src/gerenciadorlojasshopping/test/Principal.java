@@ -1,6 +1,7 @@
 package gerenciadorlojasshopping.test;
 
 import gerenciadorlojasshopping.domain.Data;
+import gerenciadorlojasshopping.domain.Endereco;
 import gerenciadorlojasshopping.domain.Loja;
 import gerenciadorlojasshopping.domain.Produto;
 
@@ -24,9 +25,33 @@ public class Principal {
 
             switch (i) {
                 case 1:
-                    loja = new Loja(Teclado.leString("Digite o nome da Loja: "),
-                            Teclado.leInt("Digite a quantidade de funcionários: "),
-                            Teclado.leInt("Digite o salário base dos funcionários: "));
+
+                    String nomeLoja = Teclado.leString("Digite o nome da Loja: ");
+                    int qntFuncionarios = Teclado.leInt("Digite a quantidade de funcionários: ");
+                    int salarioBaseFuncionarios = Teclado.leInt("Digite o salário base dos funcionários: ");
+
+                    System.out.println("Informe dia, mês e ano da fundação da loja (dd mm aaaa)");
+                    int diaFundacao = Teclado.leInt();
+                    int mesFundacao = Teclado.leInt();
+                    int anoFundacao = Teclado.leInt();
+                    Data dataFundacao = new Data(diaFundacao, mesFundacao, anoFundacao);
+
+                    System.out.println("Informe o endereço da loja (Nome da rua, Cidade, Estado, Pais, Cep, " +
+                            "Numero e Complemento)");
+                    String nomeRua = Teclado.leString();
+                    String cidade = Teclado.leString();
+                    String estado = Teclado.leString();
+                    String pais = Teclado.leString();
+                    String cep = Teclado.leString();
+                    String numero = Teclado.leString();
+                    String complemento = Teclado.leString();
+
+                    Endereco enderecoLoja = new Endereco(nomeRua, cidade, estado, pais, cep, numero, complemento);
+
+                    loja = new Loja(nomeLoja, qntFuncionarios, salarioBaseFuncionarios, enderecoLoja, dataFundacao);
+
+                    
+
                     break;
                 case 2:
                     String nomeProduto = Teclado.leString("Digite o nome da Produto: ");
