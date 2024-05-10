@@ -12,15 +12,24 @@ public class Loja {
     public Loja(String nome, int quantidadeFuncionarios){
         this.nome = nome;
         this.quantidadeFuncionarios = quantidadeFuncionarios;
+        /**
         this.endereco = new Endereco("Demétrio Ribeiro", "Porto Alegre",
                 "RS", "Brasil", "90010-311", "1085", "01");
         this.dataFundacao = new Data(12, 10, 1928);
+        **/
     }
 
     public Loja(String nome, int quantidadeFuncionarios, int salarioBaseFuncionario) {
         this(nome, quantidadeFuncionarios);
         this.salarioBaseFuncionario = salarioBaseFuncionario;
         this.setSalarioBaseFuncionario(-1);
+    }
+
+    public Loja(String nome, int quantidadeFuncionarios, int salarioBaseFuncionario,
+                Endereco endereco, Data dataFundacao) {
+        this(nome, quantidadeFuncionarios, salarioBaseFuncionario);
+        this.endereco = endereco;
+        this.dataFundacao = dataFundacao;
     }
 
     public double gastosComSalario(){

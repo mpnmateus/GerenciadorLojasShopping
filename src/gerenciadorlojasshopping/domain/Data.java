@@ -16,7 +16,7 @@ public class Data {
             this.ano = 2000;
         }
     }
-    
+
     private boolean validarData(int dia, int mes, int ano){
         if (mes < 1 || mes > 12){
             return false;

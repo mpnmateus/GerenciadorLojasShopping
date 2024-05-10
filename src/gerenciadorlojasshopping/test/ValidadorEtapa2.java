@@ -104,7 +104,7 @@ public class ValidadorEtapa2 {
 
 		
 		//// Verificação da classe Loja
-		Loja loja1 = new Loja ("E3", 5, e1, d1);
+		Loja loja1 = new Loja ("E3", 5);
 		System.out.println("[OK] Classe Loja identificada (construtor com dois parâmetros)");
 		
 		Loja loja2 = new Loja ("E7", 20, 2000, e1, d1);
