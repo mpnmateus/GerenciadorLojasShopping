@@ -10,8 +10,11 @@ public class Produto {
     public Produto(String nome, int preco){
         this.nome = nome;
         this.preco = preco;
-        dataValidade = new Data(10, 11, 2023);
-        data = new Data(10, 2, 2024);
+    }
+
+    public Produto (String nome, int preco, Data dataValidade){
+        this(nome, preco);
+        this.dataValidade = dataValidade;
     }
 
 
