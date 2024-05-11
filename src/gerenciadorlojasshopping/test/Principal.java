@@ -50,7 +50,7 @@ public class Principal {
 
                     loja = new Loja(nomeLoja, qntFuncionarios, salarioBaseFuncionarios, enderecoLoja, dataFundacao);
 
-                    
+
 
                     break;
                 case 2:
@@ -65,6 +65,15 @@ public class Principal {
 
                     produto = new Produto(nomeProduto, precoProduto, dataValidade);
 
+                    if (produto != null) {
+                        Data dataReferencia = new Data(20, 10, 2023);
+                        if (produto.estaVencido(dataReferencia)) {
+                            System.out.println("\nPRODUTO VENCIDO");
+                        } else {
+                            System.out.println("\nPRODUTO NÃO VENCIDO");
+                        }
+                    }
+
                     System.out.println("Informações cadastradas no sistema!+" +
                             "\nProduto: "+produto.getNome()+"\nPreço:"+produto.getPreco()+
                             "\nData Validade:"+produto.getDataValidade());
@@ -77,11 +86,7 @@ public class Principal {
             }
 
         }
-        if (produto.estaVencido(new Data(20,10,2023))){
-            System.out.println("\nPRODUTO VENCIDO!");
-        } else {
-            System.out.println("\nPRODUTO NÃO VENCIDO");
-        }
+
 
     }
 }
