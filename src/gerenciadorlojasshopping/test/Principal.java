@@ -65,6 +65,8 @@ public class Principal {
 
                     produto = new Produto(nomeProduto, precoProduto, dataValidade);
 
+
+                    //Verifica se o produto está vencido na data de 20/10/2013 (OK)
                     if (produto != null) {
                         Data dataReferencia = new Data(20, 10, 2023);
                         if (produto.estaVencido(dataReferencia)) {
@@ -85,6 +87,20 @@ public class Principal {
                     System.out.println("\nOpção inválida!");
             }
 
+        }
+
+        if (loja != null) {
+            System.out.println("\nEssas são as informações da loja criada no sistema: ");
+            System.out.println(loja.toString());
+        } else{
+            System.out.println("\nNenhuma loja criada.");
+        }
+
+        if (produto != null || produto.getNome().length() != 0) {
+            System.out.println("\nEssas são as informações do produto criado no sistema");
+            System.out.println(produto.toString());
+        } else {
+            System.out.println("\nNenhum produto criado.");
         }
 
 
