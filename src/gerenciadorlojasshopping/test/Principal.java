@@ -89,7 +89,7 @@ public class Principal {
 
         }
 
-        if (loja != null) {
+        if (loja != null || !loja.getNome().isEmpty()) {
             System.out.println("\nEssas são as informações da loja criada no sistema: ");
             System.out.println(loja.toString());
         } else{
