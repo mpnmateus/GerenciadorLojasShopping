@@ -59,7 +59,7 @@ public class Data {
     }
     @Override
     public String toString(){
-        return "Data: "+this.dia+"/"+this.mes+"/"+this.ano;
+        return "Data {"+this.dia+"/"+this.mes+"/"+this.ano+"}";
     }
 
     public int getDia() { return dia; }
