@@ -5,27 +5,22 @@ import javax.swing.*;
 public class Loja {
     private String nome;
     private int quantidadeFuncionarios;
-    private int salarioBaseFuncionario;
+    private double salarioBaseFuncionario;
     private Endereco endereco;
     private Data dataFundacao;
 
     public Loja(String nome, int quantidadeFuncionarios){
         this.nome = nome;
         this.quantidadeFuncionarios = quantidadeFuncionarios;
-        /**
-        this.endereco = new Endereco("Demétrio Ribeiro", "Porto Alegre",
-                "RS", "Brasil", "90010-311", "1085", "01");
-        this.dataFundacao = new Data(12, 10, 1928);
-        **/
+        this.salarioBaseFuncionario = -1;
     }
 
-    public Loja(String nome, int quantidadeFuncionarios, int salarioBaseFuncionario) {
+    public Loja(String nome, int quantidadeFuncionarios, double salarioBaseFuncionario) {
         this(nome, quantidadeFuncionarios);
         this.salarioBaseFuncionario = salarioBaseFuncionario;
-        this.setSalarioBaseFuncionario(-1);
     }
 
-    public Loja(String nome, int quantidadeFuncionarios, int salarioBaseFuncionario,
+    public Loja(String nome, int quantidadeFuncionarios, double salarioBaseFuncionario,
                 Endereco endereco, Data dataFundacao) {
         this(nome, quantidadeFuncionarios, salarioBaseFuncionario);
         this.endereco = endereco;
@@ -62,8 +57,8 @@ public class Loja {
     public int getQuantidadeFuncionarios() { return quantidadeFuncionarios; }
     public void setQuantidadeFuncionarios(int quantidadeFuncionarios) { this.quantidadeFuncionarios = quantidadeFuncionarios; }
 
-    public int getSalarioBaseFuncionario() { return salarioBaseFuncionario; }
-    public void setSalarioBaseFuncionario(int salarioBaseFuncionario) { this.salarioBaseFuncionario = salarioBaseFuncionario; }
+    public double getSalarioBaseFuncionario() { return salarioBaseFuncionario; }
+    public void setSalarioBaseFuncionario(double salarioBaseFuncionario) { this.salarioBaseFuncionario = salarioBaseFuncionario; }
 
     public void setEndereco (Endereco endereco){ this.endereco = endereco; }
     public Endereco getEndereco (){ return this.endereco; }
