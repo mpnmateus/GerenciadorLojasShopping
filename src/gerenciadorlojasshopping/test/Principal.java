@@ -8,19 +8,19 @@ import gerenciadorlojasshopping.domain.Produto;
 public class Principal {
 
     public static void main(String[] args) {
-        System.out.println("|-----------------------------------------|");
-        System.out.println("|----------------MENU---------------------|");
-        System.out.println("|-----------------------------------------|");
-        System.out.println("|          (1) criar uma loja             |");
-        System.out.println("|          (2) criar um produto           |");
-        System.out.println("|          (3) sair                       |");
-        System.out.println("|_________________________________________|");
 
         Produto produto = null;
         Loja loja = null;
 
         int i = 0;
         while (i != 3) {
+            System.out.println("|-----------------------------------------|");
+            System.out.println("|----------------MENU---------------------|");
+            System.out.println("|-----------------------------------------|");
+            System.out.println("|          (1) criar uma loja             |");
+            System.out.println("|          (2) criar um produto           |");
+            System.out.println("|          (3) sair                       |");
+            System.out.println("|_________________________________________|");
             i = Teclado.leInt("\nDigite uma opção: ");
 
             switch (i) {
@@ -76,7 +76,7 @@ public class Principal {
                         }
                     }
 
-                    System.out.println("Informações cadastradas no sistema!+" +
+                    System.out.println("Informações cadastradas no sistema!" +
                             "\nProduto: "+produto.getNome()+"\nPreço:"+produto.getPreco()+
                             "\nData Validade:"+produto.getDataValidade());
                     break;
@@ -89,14 +89,14 @@ public class Principal {
 
         }
 
-        if (loja != null || !loja.getNome().isEmpty()) {
+        if (loja != null ) {
             System.out.println("\nEssas são as informações da loja criada no sistema: ");
             System.out.println(loja.toString());
         } else{
             System.out.println("\nNenhuma loja criada.");
         }
 
-        if (produto != null || produto.getNome().length() != 0) {
+        if (produto != null ) {
             System.out.println("\nEssas são as informações do produto criado no sistema");
             System.out.println(produto.toString());
         } else {
