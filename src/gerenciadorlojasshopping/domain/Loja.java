@@ -47,9 +47,9 @@ public class Loja {
     }
     @Override
     public String toString(){
-        return "Loja { Nome: "+ this.nome+ "\nQuantidade de Funcionários: "+ quantidadeFuncionarios
+        return "Loja \nNome: "+ this.nome+ "\nQuantidade de Funcionários: "+ quantidadeFuncionarios
                 + "\nSalário base dos Funcionários: "+ this.salarioBaseFuncionario+ "\nEndereço: "+ this.endereco+
-                "\nData de Fundação: " + this.dataFundacao+"}";
+                "\nData de Fundação: " + this.dataFundacao;
     }
     public String getNome() { return nome; }
     public void setNome(String nome) { this.nome = nome; }
