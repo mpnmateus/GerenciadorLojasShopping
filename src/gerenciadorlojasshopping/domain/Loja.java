@@ -48,7 +48,7 @@ public class Loja {
     @Override
     public String toString(){
         return String.format(
-                "Loja: [Nome = %s, Quantidade de Funcionários = %d, Salário base dos Funcionários = %f, Endereço = %s, Data de fundação = %d]",
+                "Loja: \n[Nome = %s, Quantidade de Funcionários = %d, Salário base dos Funcionários = %f, Endereço = %s, \nData de fundação = %d]",
                 this.nome, this.quantidadeFuncionarios, this.salarioBaseFuncionario, this.endereco, this.dataFundacao
         );
     }
