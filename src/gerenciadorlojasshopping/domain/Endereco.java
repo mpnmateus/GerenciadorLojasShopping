@@ -22,9 +22,10 @@ public class Endereco {
     }
     @Override
     public String toString(){
-        return "Endereço { Nome: "+this.nomeDaRua+"\nCidade: "+this.cidade+"\nEstado: "+this.estado+
-                "\nPaís: "+this.pais+"Cep: "+this.cep+"\nNúmero: "+this.numero+"\nComplemento: "
-                +this.complemento+"}";
+        return String.format(
+                "Endereço: [Endereço = %s, Cidade = %s, Estado = %s, País = %s, CEP = %s, Número = %s, Complemento = %s]",
+                this.nomeDaRua, this.cidade, this.estado, this.pais, this.cep, this.numero, this.complemento
+                );
     }
 
     public void setNomeDaRua(String nomeDaRua){ this.nomeDaRua = nomeDaRua; }
