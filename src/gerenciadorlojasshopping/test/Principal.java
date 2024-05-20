@@ -1,9 +1,7 @@
 package gerenciadorlojasshopping.test;
 
-import gerenciadorlojasshopping.domain.Data;
-import gerenciadorlojasshopping.domain.Endereco;
-import gerenciadorlojasshopping.domain.Loja;
-import gerenciadorlojasshopping.domain.Produto;
+import com.sun.source.tree.UsesTree;
+import gerenciadorlojasshopping.domain.*;
 
 public class Principal {
 
