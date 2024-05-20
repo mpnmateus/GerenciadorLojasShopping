@@ -38,7 +38,10 @@ public class Produto {
 
     @Override //para ter ctz que está sobreescrevendo
     public String toString(){
-        return "Produto { Nome: "+ this.nome + ", Preco: " + this.preco + ", Data de Validade: " + this.dataValidade+"}";
+        return String.format(
+                "Produto: [Nome = %s, Preço = %d, DataValidade = %s]",
+                this.nome, this.preco, this.dataValidade
+        );
     }
 
     public void setNome(String nome){ this.nome = nome; }
