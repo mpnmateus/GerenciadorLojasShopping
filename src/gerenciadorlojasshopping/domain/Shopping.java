@@ -11,10 +11,21 @@ public class Shopping {
         this.lojas = new Loja[qntMaximaLojas];
     }
 
+    public boolean insereLoja(Loja loja){
+        boolean inseriu = false;
+        for (int i = 0; i < lojas.length; i++)
+            if (lojas[i] == null){
+                lojas[i] = loja;
+                inseriu = true;
+                break;
+            }
+        return inseriu;
+    }
+
     @Override
     public String toString(){
         return String.format(
-                "Shopping: \n[Nome = %s, Endereço = %s, \nLojas = %s]",
+                "Shopping: \n[Nome = %s, \nEndereço = %s, \nLojas = %s]",
                 this.nome, this.endereco, this.lojas
         );
     }
