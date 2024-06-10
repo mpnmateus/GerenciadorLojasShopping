@@ -1,3 +1,7 @@
+package gerenciadorlojasshopping.test;
+
+import gerenciadorlojasshopping.domain.*;
+
 public class ValidadorEtapa3 {
 
 	public static void main(String[] args){
