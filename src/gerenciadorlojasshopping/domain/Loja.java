@@ -71,13 +71,12 @@ public class Loja {
 
     public boolean insereProduto (Produto p){
         boolean achou = false;
-        for (int i = 0; i < estoqueProdutos.length; i++){
+        for (int i = 0; i < estoqueProdutos.length; i++)
             if (estoqueProdutos[i] == null) {
                 estoqueProdutos[i] = p;
                 achou = true;
                 break;
             }
-        }
         return achou;
     }
 
