@@ -34,27 +34,37 @@ public class Shopping {
 
     public int quantidadeLojasPorTipo(String tipoLoja){
         int qntLojas = 0;
+        boolean tipoValido = false;
+
         if (tipoLoja.equalsIgnoreCase("Alimentacao")){
+            tipoValido = true;
             for (int i = 0; i < lojas.length; i++)
                 if (lojas[i] instanceof Alimentacao)
                     qntLojas++;
         } else if (tipoLoja.equalsIgnoreCase("Bijuteria")) {
+            tipoValido = true;
             for (int i = 0; i < lojas.length; i++)
                 if (lojas[i] instanceof Bijuteria)
                     qntLojas++;
         } else if (tipoLoja.equalsIgnoreCase("Cosmetico")) {
+            tipoValido = true;
             for (int i = 0; i < lojas.length; i++)
                 if (lojas[i] instanceof Cosmetico)
                     qntLojas++;
         } else if (tipoLoja.equalsIgnoreCase("Informatica")) {
+            tipoValido = true;
             for (int i = 0; i < lojas.length; i++)
                 if (lojas[i] instanceof Informatica)
                     qntLojas++;
         }  else if (tipoLoja.equalsIgnoreCase("Vestuario")) {
+            tipoValido = true;
             for (int i = 0; i < lojas.length; i++)
                 if (lojas[i] instanceof Vestuario)
                     qntLojas++;
         }
+        if (!tipoValido)
+            return -1;
+
         return qntLojas;
     }
 
