@@ -12,7 +12,7 @@ public class Loja {
 
     public Loja (int qntMaximaProdutos){
         int i = qntMaximaProdutos;
-        estoqueProdutos = new Produto [i];
+        this.estoqueProdutos = new Produto [i];
     }
 
     public Loja(String nome, int quantidadeFuncionarios, double salarioBaseFuncionario) {
