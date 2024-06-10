@@ -22,6 +22,16 @@ public class Shopping {
         return inseriu;
     }
 
+    public boolean removeLoja(String nomeLoja){
+        boolean removeu = false;
+        for (int i = 0; i < lojas.length; i++)
+            if (lojas[i].getNome().equalsIgnoreCase(nomeLoja)){
+                lojas[i] = null;
+                removeu = true;
+            }
+        return removeu;
+    }
+
     @Override
     public String toString(){
         return String.format(
