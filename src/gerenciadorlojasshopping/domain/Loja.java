@@ -80,6 +80,17 @@ public class Loja {
         return achou;
     }
 
+    public boolean removeProduto(String nomeProduto){
+        boolean removeu = false;
+        for (int i = 0; i < estoqueProdutos.length; i++)
+            if (estoqueProdutos[i].getNome().equalsIgnoreCase(nomeProduto)){
+                estoqueProdutos[i] = null;
+                removeu = true;
+                break;
+            }
+        return removeu;
+    }
+
     @Override
     public String toString(){
         return String.format(
