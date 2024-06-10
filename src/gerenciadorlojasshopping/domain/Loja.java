@@ -82,4 +82,7 @@ public class Loja {
 
     public Data getDataFundacao() { return dataFundacao; }
     public void setDataFundacao(Data dataFundacao) { this.dataFundacao = dataFundacao; }
+
+    public Produto[] getEstoqueProdutos() { return estoqueProdutos; }
+    public void setEstoqueProdutos(Produto[] estoqueProdutos) { this.estoqueProdutos = estoqueProdutos; }
 }
