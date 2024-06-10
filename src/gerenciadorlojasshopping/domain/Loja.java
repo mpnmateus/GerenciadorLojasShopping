@@ -61,6 +61,15 @@ public class Loja {
             return ' ';
         }
     }
+
+    public void imprimeProdutos(){
+        for (int i = 0; i < estoqueProdutos.length; i++){
+            System.out.println("Produto " + i + ":" + estoqueProdutos[i]);
+        }
+
+
+    }
+
     @Override
     public String toString(){
         return String.format(
