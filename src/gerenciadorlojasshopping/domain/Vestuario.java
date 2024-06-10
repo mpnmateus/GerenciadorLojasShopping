@@ -13,6 +13,6 @@ public class Vestuario extends Loja {
         return super.toString() + "\nProdutos importados: " + produtosImportados + "\n";
     }
 
-    public boolean isProdutosImportados() { return produtosImportados; }
+    public boolean getProdutosImportados() { return produtosImportados; }
     public void setProdutosImportados(boolean produtosImportados) { this.produtosImportados = produtosImportados; }
 }
