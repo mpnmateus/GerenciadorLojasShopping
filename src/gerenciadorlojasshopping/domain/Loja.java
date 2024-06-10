@@ -8,6 +8,18 @@ public class Loja {
     private double salarioBaseFuncionario;
     private Endereco endereco;
     private Data dataFundacao;
+    private Produto [] estoqueProdutos;
+
+    public Loja (int qntMaximaProdutos){
+        int i = qntMaximaProdutos;
+        estoqueProdutos = new Produto [i];
+    }
+
+    public Loja(String nome, int quantidadeFuncionarios, double salarioBaseFuncionario) {
+        this.nome = nome;
+        this.quantidadeFuncionarios = quantidadeFuncionarios;
+        this.salarioBaseFuncionario = salarioBaseFuncionario;
+    }
 
     public Loja(String nome, int quantidadeFuncionarios){
         this.nome = nome;
@@ -15,14 +27,18 @@ public class Loja {
         this.salarioBaseFuncionario = -1;
     }
 
-    public Loja(String nome, int quantidadeFuncionarios, double salarioBaseFuncionario) {
-        this(nome, quantidadeFuncionarios);
-        this.salarioBaseFuncionario = salarioBaseFuncionario;
-    }
-
     public Loja(String nome, int quantidadeFuncionarios, double salarioBaseFuncionario,
                 Endereco endereco, Data dataFundacao) {
         this(nome, quantidadeFuncionarios, salarioBaseFuncionario);
+        this.endereco = endereco;
+        this.dataFundacao = dataFundacao;
+    }
+
+    //Construtor parâmetros validadorEtapa3 - Loja1
+    public Loja(String nome, int quantidadeFuncionarios, Endereco endereco, Data dataFundacao) {
+        this.nome = nome;
+        this.quantidadeFuncionarios = quantidadeFuncionarios;
+        this.salarioBaseFuncionario = -1;
         this.endereco = endereco;
         this.dataFundacao = dataFundacao;
     }
@@ -48,7 +64,7 @@ public class Loja {
     @Override
     public String toString(){
         return String.format(
-                "Loja: \n[Nome = %s, Quantidade de Funcionários = %d, Salário base dos Funcionários = %f, Endereço = %s, \nData de fundação = %d]",
+                "Loja: \n[Nome = %s, Quantidade de Funcionários = %d, Salário base dos Funcionários = %f, Endereço = %s, \nData de fundação = %s]",
                 this.nome, this.quantidadeFuncionarios, this.salarioBaseFuncionario, this.endereco, this.dataFundacao
         );
     }
