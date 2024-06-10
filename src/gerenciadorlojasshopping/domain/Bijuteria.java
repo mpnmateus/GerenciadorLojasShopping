@@ -13,4 +13,7 @@ public class Bijuteria extends Loja{
     public String toString(){
         return super.toString() + "\nMeta de Vendas: " + this.metaVendas;
     }
+
+    public double getMetaVendas() { return metaVendas; }
+    public void setMetaVendas(double metaVendas) { this.metaVendas = metaVendas; }
 }
