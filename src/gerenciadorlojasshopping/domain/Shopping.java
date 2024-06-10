@@ -32,6 +32,32 @@ public class Shopping {
         return removeu;
     }
 
+    public int quantidadeLojasPorTipo(String tipoLoja){
+        int qntLojas = 0;
+        if (tipoLoja.equalsIgnoreCase("Alimentacao")){
+            for (int i = 0; i < lojas.length; i++)
+                if (lojas[i] instanceof Alimentacao)
+                    qntLojas++;
+        } else if (tipoLoja.equalsIgnoreCase("Bijuteria")) {
+            for (int i = 0; i < lojas.length; i++)
+                if (lojas[i] instanceof Bijuteria)
+                    qntLojas++;
+        } else if (tipoLoja.equalsIgnoreCase("Cosmetico")) {
+            for (int i = 0; i < lojas.length; i++)
+                if (lojas[i] instanceof Cosmetico)
+                    qntLojas++;
+        } else if (tipoLoja.equalsIgnoreCase("Informatica")) {
+            for (int i = 0; i < lojas.length; i++)
+                if (lojas[i] instanceof Informatica)
+                    qntLojas++;
+        }  else if (tipoLoja.equalsIgnoreCase("Vestuario")) {
+            for (int i = 0; i < lojas.length; i++)
+                if (lojas[i] instanceof Vestuario)
+                    qntLojas++;
+        }
+        return qntLojas;
+    }
+
     @Override
     public String toString(){
         return String.format(
