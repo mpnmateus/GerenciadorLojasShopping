@@ -7,7 +7,15 @@ public class Bijuteria extends Loja{
                      Endereco endereco, Data dataFundacao, double metaVendas){
         super(nome, quantidadeFuncionarios, salarioBaseFuncionario, endereco, dataFundacao);
         this.metaVendas = metaVendas;
-        }
+    }
+
+    //Construtor etapa 4
+    public Bijuteria(String nome, int quantidadeFuncionarios, double salarioBaseFuncionario,
+                     Endereco endereco, Data dataFundacao, double metaVendas, int qntMaximaProdutos){
+        super(nome, quantidadeFuncionarios, salarioBaseFuncionario, endereco, dataFundacao, qntMaximaProdutos);
+        this.metaVendas = metaVendas;
+    }
+
 
     @Override
     public String toString(){
