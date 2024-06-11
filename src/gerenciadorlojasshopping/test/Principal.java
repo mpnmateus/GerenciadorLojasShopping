@@ -12,6 +12,7 @@ public class Principal {
 
         int i = 0;
         while (i != 3) {
+            System.out.println("\n");
             System.out.println("|-----------------------------------------|");
             System.out.println("|----------------MENU---------------------|");
             System.out.println("|-----------------------------------------|");
@@ -100,7 +101,6 @@ public class Principal {
         } else {
             System.out.println("\nNenhum produto criado.");
         }
-
 
     }
 }
