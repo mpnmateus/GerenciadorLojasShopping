@@ -68,6 +68,22 @@ public class Shopping {
         return qntLojas;
     }
 
+    public Informatica lojaSeguroMaisCaro(){
+        Informatica lojaMaisCara = null;
+        double maiorSeguro = Double.MIN_VALUE;
+
+        for (int i = 0; i < lojas.length; i++) {
+            if (lojas[i] instanceof Informatica) {
+                Informatica lojaInformatica = (Informatica) lojas[i];
+                if (lojaInformatica.getSeguroEletronicos() > maiorSeguro) {
+                    maiorSeguro = lojaInformatica.getSeguroEletronicos();
+                    lojaMaisCara = lojaInformatica;
+                }
+            }
+        }
+        return lojaMaisCara;
+    }
+
     @Override
     public String toString(){
         return String.format(
