@@ -9,6 +9,13 @@ public class Informatica extends Loja{
         this.seguroEletronicos = seguroEletronicos;
     }
 
+    //Construtor Etapa 04
+    public Informatica(String nome, int quantidadeFuncionarios, double salarioBaseFuncionario,
+                       Endereco endereco, Data dataFundacao, double seguroEletronicos, int qntMaximaProdutos){
+        super(nome, quantidadeFuncionarios, salarioBaseFuncionario, endereco, dataFundacao, qntMaximaProdutos);
+        this.seguroEletronicos = seguroEletronicos;
+    }
+
     public String toString(){
         return super.toString() + "Valor do seguro de Eletrônicos: " + this.seguroEletronicos;
     }
