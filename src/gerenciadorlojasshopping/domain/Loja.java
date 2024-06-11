@@ -10,23 +10,21 @@ public class Loja {
     private Data dataFundacao;
     private Produto [] estoqueProdutos;
 
-    public Loja (int qntMaximaProdutos){
-        int i = qntMaximaProdutos;
-        this.estoqueProdutos = new Produto [i];
-    }
-
-    public Loja(String nome, int quantidadeFuncionarios, double salarioBaseFuncionario) {
-        this.nome = nome;
-        this.quantidadeFuncionarios = quantidadeFuncionarios;
-        this.salarioBaseFuncionario = salarioBaseFuncionario;
-    }
-
+    //Construtor 2 parâmetros validadorEtapa1 - Loja1
     public Loja(String nome, int quantidadeFuncionarios){
         this.nome = nome;
         this.quantidadeFuncionarios = quantidadeFuncionarios;
         this.salarioBaseFuncionario = -1;
     }
 
+    //Construtor 3 parâmetros validadorEtapa1 - Loja2
+    public Loja(String nome, int quantidadeFuncionarios, double salarioBaseFuncionario) {
+        this.nome = nome;
+        this.quantidadeFuncionarios = quantidadeFuncionarios;
+        this.salarioBaseFuncionario = salarioBaseFuncionario;
+    }
+
+    //Construtor 5 parâmetros validadorEtapa2 - Loja2
     public Loja(String nome, int quantidadeFuncionarios, double salarioBaseFuncionario,
                 Endereco endereco, Data dataFundacao) {
         this(nome, quantidadeFuncionarios, salarioBaseFuncionario);
@@ -34,7 +32,7 @@ public class Loja {
         this.dataFundacao = dataFundacao;
     }
 
-    //Construtor parâmetros validadorEtapa3 - Loja1
+    //Construtor 4 parâmetros validadorEtapa3 - Loja1
     public Loja(String nome, int quantidadeFuncionarios, Endereco endereco, Data dataFundacao) {
         this.nome = nome;
         this.quantidadeFuncionarios = quantidadeFuncionarios;
@@ -42,6 +40,29 @@ public class Loja {
         this.endereco = endereco;
         this.dataFundacao = dataFundacao;
     }
+
+    //Construtor 5 parâmetros validadorEtapa4 - Loja1
+    public Loja(String nome, int quantidadeFuncionarios, Endereco endereco, Data dataFundacao,
+                int qntMaximaProdutos) {
+        this.nome = nome;
+        this.quantidadeFuncionarios = quantidadeFuncionarios;
+        this.salarioBaseFuncionario = -1;
+        this.endereco = endereco;
+        this.dataFundacao = dataFundacao;
+        int i = qntMaximaProdutos;
+        this.estoqueProdutos = new Produto [i];
+    }
+
+    //Construtor 6 parâmetros validadorEtapa4 - Loja2
+    public Loja(String nome, int quantidadeFuncionarios, double salarioBaseFuncionario,
+                Endereco endereco, Data dataFundacao, int qntMaximaProdutos) {
+        this(nome, quantidadeFuncionarios, salarioBaseFuncionario);
+        this.endereco = endereco;
+        this.dataFundacao = dataFundacao;
+        int i = qntMaximaProdutos;
+        this.estoqueProdutos = new Produto [i];
+    }
+
 
     public double gastosComSalario(){
         if (salarioBaseFuncionario == -1)
