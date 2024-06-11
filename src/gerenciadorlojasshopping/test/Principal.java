@@ -90,14 +90,14 @@ public class Principal {
 
         if (loja != null ) {
             System.out.println("\nEssas são as informações da loja criada no sistema: ");
-            System.out.println(loja.toString());
+            System.out.println(loja);
         } else{
             System.out.println("\nNenhuma loja criada.");
         }
 
         if (produto != null ) {
             System.out.println("\nEssas são as informações do produto criado no sistema");
-            System.out.println(produto.toString());
+            System.out.println(produto);
         } else {
             System.out.println("\nNenhum produto criado.");
         }
