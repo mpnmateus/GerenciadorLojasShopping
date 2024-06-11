@@ -49,8 +49,7 @@ public class Loja {
         this.salarioBaseFuncionario = -1;
         this.endereco = endereco;
         this.dataFundacao = dataFundacao;
-        int i = qntMaximaProdutos;
-        this.estoqueProdutos = new Produto [i];
+        this.estoqueProdutos = new Produto [qntMaximaProdutos];
     }
 
     //Construtor 6 parâmetros validadorEtapa4 - Loja2
@@ -59,8 +58,7 @@ public class Loja {
         this(nome, quantidadeFuncionarios, salarioBaseFuncionario);
         this.endereco = endereco;
         this.dataFundacao = dataFundacao;
-        int i = qntMaximaProdutos;
-        this.estoqueProdutos = new Produto [i];
+        this.estoqueProdutos = new Produto [qntMaximaProdutos];
     }
 
 
