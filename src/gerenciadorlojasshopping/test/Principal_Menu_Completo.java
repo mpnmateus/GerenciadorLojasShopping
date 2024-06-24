@@ -72,7 +72,7 @@ public class Principal_Menu_Completo {
                         loja = new Loja(nomeLoja, qntFuncionarios, salarioBaseFuncionarios, enderecoLoja,
                                 dataFundacao, qntMaximaProdutos);
 
-                        if (shopping.insereLoja(loja)) {
+                        if (shopping != null && shopping.insereLoja(loja)) {
                             System.out.println("Loja inserida com sucesso!");
                             System.out.println("\n" + loja);
                         } else
@@ -82,7 +82,7 @@ public class Principal_Menu_Completo {
                     }
                     break;
 
-                case 5:
+                case 4:
                     String nomeProduto = Teclado.leString("Digite o nome da Produto: ");
                     int precoProduto = Teclado.leInt("Digite o preço do produto");
 
@@ -92,8 +92,14 @@ public class Principal_Menu_Completo {
                     int ano = Teclado.leInt();
                     Data dataValidade = new Data(dia, mes, ano);
 
+                    //Cria uma intância de produto
                     produto = new Produto(nomeProduto, precoProduto, dataValidade);
 
+                    if (loja != null && loja.insereProduto(produto)) {
+                        System.out.println("Produto inserido com sucesso!");
+                        System.out.println("\n" + produto);
+                    } else
+                        System.out.println("Não há mais espaço para produtos na loja");
 
                     //Verifica se o produto está vencido na data de 20/10/2023 (OK)
                     if (produto != null) {
@@ -111,7 +117,7 @@ public class Principal_Menu_Completo {
                     break;
 
 
-                case 8:
+                case 6:
                     System.out.println("\nVocê saiu do menu!");
                     break;
                 default:
