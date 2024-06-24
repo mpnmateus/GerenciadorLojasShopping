@@ -117,6 +117,7 @@ public class Loja {
                 this.nome, this.quantidadeFuncionarios, this.salarioBaseFuncionario, this.endereco, this.dataFundacao, this.estoqueProdutos
         );
     }
+
     public String getNome() { return nome; }
     public void setNome(String nome) { this.nome = nome; }
 
