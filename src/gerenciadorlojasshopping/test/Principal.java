@@ -11,14 +11,18 @@ public class Principal {
         Loja loja = null;
 
         int i = 0;
-        while (i != 3) {
+        while (i != 7) {
             System.out.println("\n");
             System.out.println("|-----------------------------------------|");
             System.out.println("|----------------MENU---------------------|");
             System.out.println("|-----------------------------------------|");
-            System.out.println("|          (1) criar uma loja             |");
-            System.out.println("|          (2) criar um produto           |");
-            System.out.println("|          (3) sair                       |");
+            System.out.println("|          (1) CRIAR UMA LOJA             |");
+            System.out.println("|             (2) insere uma loja         |");
+            System.out.println("|             (3) remove uma loja         |");
+            System.out.println("|          (4) CRIAR UM PRODUTO           |");
+            System.out.println("|             (5) inserir um produto      |");
+            System.out.println("|             (6) remover um produto      |");
+            System.out.println("|          (7) SAIR                       |");
             System.out.println("|_________________________________________|");
             i = Teclado.leInt("\nDigite uma opção: ");
 
@@ -65,7 +69,7 @@ public class Principal {
                     produto = new Produto(nomeProduto, precoProduto, dataValidade);
 
 
-                    //Verifica se o produto está vencido na data de 20/10/2013 (OK)
+                    //Verifica se o produto está vencido na data de 20/10/2023 (OK)
                     if (produto != null) {
                         Data dataReferencia = new Data(20, 10, 2023);
                         if (produto.estaVencido(dataReferencia)) {
