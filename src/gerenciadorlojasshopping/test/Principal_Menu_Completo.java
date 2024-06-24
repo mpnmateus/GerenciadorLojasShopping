@@ -126,7 +126,7 @@ public class Principal_Menu_Completo {
         }
 
         if (shopping != null){
-            System.out.println("\nEssas são ");
+            System.out.println("\nEssas são as inforacções do Shopping criado no sistema: ");
             System.out.println(shopping);
         } else {
             System.out.println("\nNenhum Shopping criado.");
