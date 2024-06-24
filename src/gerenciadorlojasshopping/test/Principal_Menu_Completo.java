@@ -27,6 +27,7 @@ public class Principal_Menu_Completo {
 
             switch (i) {
 
+                //Cria um Shopping
                 case 1:
                     int qntMaximaLojas = Teclado.leInt("\nDigite a quantidade máxima de Lojas que o Shopping pode ter: ");
                     String nomeShopping = Teclado.leString("Digite o nome do shopping: ");
@@ -43,11 +44,14 @@ public class Principal_Menu_Completo {
 
                     Endereco enderecoShopping = new Endereco(nomeRua, cidade, estado, pais, cep, numero, complemento);
 
+                    //Cria uma instância de shopping
                     shopping = new Shopping(nomeShopping, enderecoShopping, qntMaximaLojas);
                     break;
 
+                //Cria uma loja dentro do shopping
                 case 2:
 
+                    //Verifica se há shopping para incluir lojas nele
                     if (shopping == null)
                         System.out.println("Tem de haver um shopping criado para incluir alguma loja.");
                     else {
@@ -69,6 +73,7 @@ public class Principal_Menu_Completo {
                                 shopping.getEndereco().getEstado(), shopping.getEndereco().getPais(), shopping.getEndereco().getCep(),
                                 shopping.getEndereco().getNumero(), shopping.getEndereco().getComplemento());
 
+                        //Cria uma instância de loja
                         loja = new Loja(nomeLoja, qntFuncionarios, salarioBaseFuncionarios, enderecoLoja,
                                 dataFundacao, qntMaximaProdutos);
 
@@ -82,41 +87,67 @@ public class Principal_Menu_Completo {
                     }
                     break;
 
-                case 4:
-                    String nomeProduto = Teclado.leString("Digite o nome da Produto: ");
-                    int precoProduto = Teclado.leInt("Digite o preço do produto");
+                //Remove uma loja dentro do shopping
+                case 3:
 
-                    System.out.println("Informe dia, mês e ano de validade do produto (dd mm aaaa)");
-                    int dia = Teclado.leInt();
-                    int mes = Teclado.leInt();
-                    int ano = Teclado.leInt();
-                    Data dataValidade = new Data(dia, mes, ano);
+                    boolean removeu = false;
 
-                    //Cria uma intância de produto
-                    produto = new Produto(nomeProduto, precoProduto, dataValidade);
+                    while(removeu == false) {
 
-                    if (loja != null && loja.insereProduto(produto)) {
-                        System.out.println("Produto inserido com sucesso!");
-                        System.out.println("\n" + produto);
-                    } else
-                        System.out.println("Não há mais espaço para produtos na loja");
+                        String nomeLojaParaRemover = Teclado.leString("Digite o nome da loja que quer remover: ");
 
-                    //Verifica se o produto está vencido na data de 20/10/2023 (OK)
-                    if (produto != null) {
-                        Data dataReferencia = new Data(20, 10, 2023);
-                        if (produto.estaVencido(dataReferencia)) {
-                            System.out.println("\nPRODUTO VENCIDO");
-                        } else {
-                            System.out.println("\nPRODUTO NÃO VENCIDO");
+                        if (shopping != null && shopping.removeLoja(nomeLojaParaRemover)) {
+                            System.out.println("Loja " + nomeLojaParaRemover + " removida com sucesso");
+                            removeu = true;
+                        } else if (shopping != null && !shopping.removeLoja(nomeLojaParaRemover)) {
+                            System.out.println("Loja não removida. Digite novamente.");
+                            removeu = false;
                         }
                     }
-
-                    System.out.println("Informações cadastradas no sistema!" +
-                            "\nProduto: "+produto.getNome()+"\nPreço:"+produto.getPreco()+
-                            "\nData Validade:"+produto.getDataValidade());
                     break;
 
+                //Cria um Produto dentro de uma loja
+                case 4:
 
+                    if (loja == null)
+                        System.out.println("Não há loja para inserir produtos");
+                    else {
+
+                        String nomeProduto = Teclado.leString("Digite o nome do Produto: ");
+                        int precoProduto = Teclado.leInt("Digite o preço do produto");
+
+                        System.out.println("Informe dia, mês e ano de validade do produto (dd mm aaaa)");
+                        int dia = Teclado.leInt();
+                        int mes = Teclado.leInt();
+                        int ano = Teclado.leInt();
+                        Data dataValidade = new Data(dia, mes, ano);
+
+                        //Cria uma instância de produto
+                        produto = new Produto(nomeProduto, precoProduto, dataValidade);
+
+                        if (loja != null && loja.insereProduto(produto)) {
+                            System.out.println("Produto inserido com sucesso!");
+                        } else
+                            System.out.println("Não há mais espaço para produtos na loja.");
+
+                        //Verifica se o produto está vencido na data de 20/10/2023 (OK)
+                        if (produto != null) {
+                            Data dataReferencia = new Data(20, 10, 2023);
+                            if (produto.estaVencido(dataReferencia)) {
+                                System.out.println("\nPRODUTO VENCIDO");
+                            } else {
+                                System.out.println("\nPRODUTO NÃO VENCIDO");
+                            }
+                        }
+
+                        System.out.println("Informações cadastradas no sistema!" +
+                                "\nProduto: " + produto.getNome() + "\nPreço:" + produto.getPreco() +
+                                "\nData Validade:" + produto.getDataValidade());
+                        break;
+                    }
+                    break;
+
+                //Sai do programa
                 case 6:
                     System.out.println("\nVocê saiu do menu!");
                     break;
