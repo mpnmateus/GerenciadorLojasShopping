@@ -11,18 +11,14 @@ public class Principal {
         Loja loja = null;
 
         int i = 0;
-        while (i != 7) {
+        while (i != 3) {
             System.out.println("\n");
             System.out.println("|-----------------------------------------|");
             System.out.println("|----------------MENU---------------------|");
             System.out.println("|-----------------------------------------|");
-            System.out.println("|          (1) CRIAR UMA LOJA             |");
-            System.out.println("|             (2) insere uma loja         |");
-            System.out.println("|             (3) remove uma loja         |");
-            System.out.println("|          (4) CRIAR UM PRODUTO           |");
-            System.out.println("|             (5) inserir um produto      |");
-            System.out.println("|             (6) remover um produto      |");
-            System.out.println("|          (7) SAIR                       |");
+            System.out.println("|          (1) criar uma loja             |");
+            System.out.println("|          (2) criar um produto           |");
+            System.out.println("|          (3) sair                       |");
             System.out.println("|_________________________________________|");
             i = Teclado.leInt("\nDigite uma opção: ");
 
@@ -56,7 +52,7 @@ public class Principal {
 
 
                     break;
-                case 4:
+                case 2:
                     String nomeProduto = Teclado.leString("Digite o nome da Produto: ");
                     int precoProduto = Teclado.leInt("Digite o preço do produto");
 
@@ -83,9 +79,7 @@ public class Principal {
                             "\nProduto: "+produto.getNome()+"\nPreço:"+produto.getPreco()+
                             "\nData Validade:"+produto.getDataValidade());
                     break;
-
-
-                case 7:
+                case 3:
                     System.out.println("\nVocê saiu do menu!");
                     break;
                 default:
