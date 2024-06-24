@@ -23,9 +23,24 @@ public class Shopping {
     }
 
     public boolean removeLoja(String nomeLoja){
+        int contadorLoja = 0;
         boolean removeu = false;
+
+        //Contar quantas lojas são null
+        for (int i = 0; i < lojas.length; i++){
+            if (lojas[i] == null)
+                contadorLoja++;
+        }
+
+        //Verificar se todas lojas são null
+        if (contadorLoja == lojas.length){
+            System.out.println("Sem lojas cadastradas");
+            return removeu;
+        }
+
+        //Remover Loja
         for (int i = 0; i < lojas.length; i++)
-            if (lojas[i].getNome().equalsIgnoreCase(nomeLoja)){
+            if (lojas[i] != null && lojas[i].getNome().equalsIgnoreCase(nomeLoja)){
                 lojas[i] = null;
                 removeu = true;
                 break;

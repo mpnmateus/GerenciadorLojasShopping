@@ -112,11 +112,11 @@ public class Loja {
         if (contadorProdutos == estoqueProdutos.length) {
                 System.out.println("Sem produtos cadastrados.");
                 return removeu;
-            }
+        }
 
         // Remover o produto
         for (int i = 0; i < estoqueProdutos.length; i++)
-            if (estoqueProdutos[i].getNome().equalsIgnoreCase(nomeProduto)){
+            if (estoqueProdutos[i] != null && estoqueProdutos[i].getNome().equalsIgnoreCase(nomeProduto)){
                 estoqueProdutos[i] = null;
                 removeu = true;
                 break;
