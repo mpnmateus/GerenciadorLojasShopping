@@ -28,6 +28,7 @@ public class Shopping {
             if (lojas[i].getNome().equalsIgnoreCase(nomeLoja)){
                 lojas[i] = null;
                 removeu = true;
+                break;
             }
         return removeu;
     }
