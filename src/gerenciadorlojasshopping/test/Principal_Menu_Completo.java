@@ -27,14 +27,12 @@ public class Principal_Menu_Completo {
             System.out.println("|_________________________________________|");
             i = Teclado.leInt("\nDigite uma opção: ");
 
-
-
-
             switch (i) {
 
                 case 1:
                     int qntMaximaLojas = Teclado.leInt("\nDigite a quantidade máxima de Lojas que o Shopping pode ter: ");
                     String nomeShopping = Teclado.leString("Digite o nome do shopping: ");
+
                     System.out.println("Informe o endereço do Shopping (Nome da rua, Cidade, Estado, Pais, Cep, " +
                             "Numero e Complemento)");
                     String nomeRua = Teclado.leString();
@@ -48,44 +46,43 @@ public class Principal_Menu_Completo {
                     Endereco enderecoShopping = new Endereco(nomeRua, cidade, estado, pais, cep, numero, complemento);
 
                     shopping = new Shopping(nomeShopping, enderecoShopping, qntMaximaLojas);
+                    break;
 
                 case 2:
 
-                    String nomeLoja = Teclado.leString("Digite o nome da Loja: ");
-                    int qntFuncionarios = Teclado.leInt("Digite a quantidade de funcionários: ");
-                    int salarioBaseFuncionarios = Teclado.leInt("Digite o salário base dos funcionários: ");
-                    int qntMaximaProdutos = Teclado.leInt("Digite a quantidade máxima de produtos que a " +
-                            "loja poderá ter: ");
+                    if (shopping == null)
+                        System.out.println("Tem de haver um shopping criado para incluir alguma loja.");
+                    else {
 
-                    System.out.println("Informe dia, mês e ano da fundação da loja (dd mm aaaa)");
-                    int diaFundacao = Teclado.leInt();
-                    int mesFundacao = Teclado.leInt();
-                    int anoFundacao = Teclado.leInt();
-                    Data dataFundacao = new Data(diaFundacao, mesFundacao, anoFundacao);
+                        String nomeLoja = Teclado.leString("Digite o nome da Loja: ");
+                        int qntFuncionarios = Teclado.leInt("Digite a quantidade de funcionários: ");
+                        int salarioBaseFuncionarios = Teclado.leInt("Digite o salário base dos funcionários: ");
+                        int qntMaximaProdutos = Teclado.leInt("Digite a quantidade máxima de produtos que a " +
+                                "loja poderá ter: ");
 
-                    System.out.println("Informe o endereço da loja (Nome da rua, Cidade, Estado, Pais, Cep, " +
-                            "Numero e Complemento)");
-                    String nomeRua = shopping.getEndereco().getNomeDaRua();
-                    String cidade = Teclado.leString();
-                    String estado = Teclado.leString();
-                    String pais = Teclado.leString();
-                    String cep = Teclado.leString();
-                    String numero = Teclado.leString();
-                    String complemento = Teclado.leString();
+                        System.out.println("Informe dia, mês e ano da fundação da loja (dd mm aaaa)");
+                        int diaFundacao = Teclado.leInt();
+                        int mesFundacao = Teclado.leInt();
+                        int anoFundacao = Teclado.leInt();
+                        Data dataFundacao = new Data(diaFundacao, mesFundacao, anoFundacao);
 
 
+                        Endereco enderecoLoja = new Endereco(shopping.getEndereco().getNomeDaRua(), shopping.getEndereco().getCidade(),
+                                shopping.getEndereco().getEstado(), shopping.getEndereco().getPais(), shopping.getEndereco().getCep(),
+                                shopping.getEndereco().getNumero(), shopping.getEndereco().getComplemento());
 
-                    Endereco enderecoLoja = new Endereco(nomeRua, cidade, estado, pais, cep, numero, complemento);
+                        loja = new Loja(nomeLoja, qntFuncionarios, salarioBaseFuncionarios, enderecoLoja,
+                                dataFundacao, qntMaximaProdutos);
 
-                    loja = new Loja(nomeLoja, qntFuncionarios, salarioBaseFuncionarios, enderecoLoja,
-                            dataFundacao, qntMaximaProdutos);
+                        if (shopping.insereLoja(loja)) {
+                            System.out.println("Loja inserida com sucesso!");
+                            System.out.println("\n" + loja);
+                        } else
+                            System.out.println("Não há mais espaço para lojas no shopping.");
 
-
-
+                        break;
+                    }
                     break;
-
-
-
 
                 case 5:
                     String nomeProduto = Teclado.leString("Digite o nome da Produto: ");
@@ -126,7 +123,7 @@ public class Principal_Menu_Completo {
         }
 
         if (shopping != null){
-            System.out.println("\nEssas são as inforacções do Shopping criado no sistema: ");
+            System.out.println("\nEssas são as inforações do Shopping criado no sistema: ");
             System.out.println(shopping);
         } else {
             System.out.println("\nNenhum Shopping criado.");
@@ -149,4 +146,4 @@ public class Principal_Menu_Completo {
     }
 }
 
-}
+
