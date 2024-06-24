@@ -56,7 +56,7 @@ public class Principal {
 
 
                     break;
-                case 2:
+                case 4:
                     String nomeProduto = Teclado.leString("Digite o nome da Produto: ");
                     int precoProduto = Teclado.leInt("Digite o preço do produto");
 
@@ -83,7 +83,9 @@ public class Principal {
                             "\nProduto: "+produto.getNome()+"\nPreço:"+produto.getPreco()+
                             "\nData Validade:"+produto.getDataValidade());
                     break;
-                case 3:
+
+
+                case 7:
                     System.out.println("\nVocê saiu do menu!");
                     break;
                 default:
