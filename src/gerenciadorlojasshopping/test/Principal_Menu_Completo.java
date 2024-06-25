@@ -11,14 +11,14 @@ public class Principal_Menu_Completo {
         Shopping shopping = null;
 
         int i = 0;
-        while (i != 8) {
+        while (i != 6) {
             System.out.println("\n");
             System.out.println("|-----------------------------------------|");
             System.out.println("|----------------MENU---------------------|");
             System.out.println("|-----------------------------------------|");
             System.out.println("|          (1) CRIAR UM SHOPPING          |");
             System.out.println("|          (2) CRIAR UMA LOJA             |");
-            System.out.println("|             (3) remove uma loja         |");
+            System.out.println("|             (3) remover uma loja        |");
             System.out.println("|          (4) CRIAR UM PRODUTO           |");
             System.out.println("|             (5) remover um produto      |");
             System.out.println("|          (6) SAIR                       |");
@@ -56,6 +56,7 @@ public class Principal_Menu_Completo {
                         System.out.println("Tem de haver um shopping criado para incluir alguma loja.");
                     else {
 
+
                         String nomeLoja = Teclado.leString("Digite o nome da Loja: ");
                         int qntFuncionarios = Teclado.leInt("Digite a quantidade de funcionários: ");
                         int salarioBaseFuncionarios = Teclado.leInt("Digite o salário base dos funcionários: ");
@@ -77,13 +78,16 @@ public class Principal_Menu_Completo {
                         loja = new Loja(nomeLoja, qntFuncionarios, salarioBaseFuncionarios, enderecoLoja,
                                 dataFundacao, qntMaximaProdutos);
 
-                        if (shopping != null && shopping.insereLoja(loja)) {
+
+                        if (shopping.insereLoja(loja)) {
                             System.out.println("Loja inserida com sucesso!");
+                            System.out.println("\nO tamanho da loja é: " + loja.tamanhoDaLoja());
                             System.out.println("\n" + loja);
                         } else
                             System.out.println("Não há mais espaço para lojas no shopping.");
 
                         break;
+
                     }
                     break;
 
@@ -92,60 +96,56 @@ public class Principal_Menu_Completo {
 
                     boolean removeu = false;
 
-                    while(removeu == false) {
+                    while(!removeu) {
 
-                        String nomeLojaParaRemover = Teclado.leString("Digite o nome da loja que quer remover: ");
+                        String nomeLojaParaRemover = Teclado.leString("\nDigite o nome da loja que quer remover: ");
 
                         if (shopping != null && shopping.removeLoja(nomeLojaParaRemover)) {
                             System.out.println("Loja " + nomeLojaParaRemover + " removida com sucesso");
                             removeu = true;
                         } else if (shopping != null && !shopping.removeLoja(nomeLojaParaRemover)) {
                             System.out.println("Loja não removida. Digite novamente.");
-                            removeu = false;
                         }
                     }
                     break;
 
-                //Cria um Produto dentro de uma loja
+                //Cria um Produto
                 case 4:
 
+                    String nomeProduto = Teclado.leString("Digite o nome do Produto: ");
+                    int precoProduto = Teclado.leInt("Digite o preço do produto");
+
+                    System.out.println("Informe dia, mês e ano de validade do produto (dd mm aaaa)");
+                    int dia = Teclado.leInt();
+                    int mes = Teclado.leInt();
+                    int ano = Teclado.leInt();
+                    Data dataValidade = new Data(dia, mes, ano);
+
+                    //Cria uma instância de produto
+                    produto = new Produto(nomeProduto, precoProduto, dataValidade);
+
                     if (loja == null)
-                        System.out.println("Não há loja para inserir produtos");
-                    else {
+                        System.out.println("Não há estoque disponível.");
+                    else if (loja.insereProduto(produto)) {
+                        System.out.println("Produto inserido com sucesso!");
+                    } else
+                        System.out.println("Não há mais espaço para produtos no estoque");
 
-                        String nomeProduto = Teclado.leString("Digite o nome do Produto: ");
-                        int precoProduto = Teclado.leInt("Digite o preço do produto");
+                    //Verifica se o produto está vencido na data de 20/10/2023 (OK)
 
-                        System.out.println("Informe dia, mês e ano de validade do produto (dd mm aaaa)");
-                        int dia = Teclado.leInt();
-                        int mes = Teclado.leInt();
-                        int ano = Teclado.leInt();
-                        Data dataValidade = new Data(dia, mes, ano);
-
-                        //Cria uma instância de produto
-                        produto = new Produto(nomeProduto, precoProduto, dataValidade);
-
-                        if (loja != null && loja.insereProduto(produto)) {
-                            System.out.println("Produto inserido com sucesso!");
-                        } else
-                            System.out.println("Não há mais espaço para produtos na loja.");
-
-                        //Verifica se o produto está vencido na data de 20/10/2023 (OK)
-                        if (produto != null) {
-                            Data dataReferencia = new Data(20, 10, 2023);
-                            if (produto.estaVencido(dataReferencia)) {
-                                System.out.println("\nPRODUTO VENCIDO");
-                            } else {
-                                System.out.println("\nPRODUTO NÃO VENCIDO");
-                            }
-                        }
-
-                        System.out.println("Informações cadastradas no sistema!" +
-                                "\nProduto: " + produto.getNome() + "\nPreço:" + produto.getPreco() +
-                                "\nData Validade:" + produto.getDataValidade());
-                        break;
+                    Data dataReferencia = new Data(20, 10, 2023);
+                    if (produto.estaVencido(dataReferencia)) {
+                        System.out.println("\nPRODUTO VENCIDO");
+                    } else {
+                        System.out.println("\nPRODUTO NÃO VENCIDO");
                     }
+
+
+                    System.out.println("Informações cadastradas no sistema!" +
+                            "\nProduto: " + produto.getNome() + "\nPreço: R$ " + produto.getPreco() +
+                            "\nData Validade:" + produto.getDataValidade());
                     break;
+
 
                 //Sai do programa
                 case 6:
@@ -157,25 +157,34 @@ public class Principal_Menu_Completo {
 
         }
 
+        System.out.println("\n---------------- RESUMO ----------------------");
         if (shopping != null){
             System.out.println("\nEssas são as inforações do Shopping criado no sistema: ");
             System.out.println(shopping);
         } else {
-            System.out.println("\nNenhum Shopping criado.");
+            System.out.println("\n[x] Nenhum Shopping criado [x]");
         }
 
         if (loja != null ) {
-            System.out.println("\nEssas são as informações da loja criada no sistema: ");
+            System.out.println("\nEssas são as informações da(s) loja(s) criada(s) no sistema: ");
+            for (int num =0; i > shopping.getLojas().length; num++) {
+                if (shopping.getLojas()[num] != null) {
+                    System.out.println("Os produtos da loja " + shopping.getLojas()[num].getNome() + "são: ");
+                    shopping.getLojas()[num].imprimeProdutos();
+                }
+            }
+
+
             System.out.println(loja);
         } else{
-            System.out.println("\nNenhuma loja criada.");
+            System.out.println("\n[x] Nenhuma loja criada [x]");
         }
 
         if (produto != null ) {
             System.out.println("\nEssas são as informações do produto criado no sistema");
             System.out.println(produto);
         } else {
-            System.out.println("\nNenhum produto criado.");
+            System.out.println("\n[x] Nenhum produto criado [x]");
         }
 
     }
