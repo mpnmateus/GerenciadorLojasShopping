@@ -39,7 +39,7 @@ public class Produto {
     @Override //para ter ctz que está sobreescrevendo
     public String toString(){
         return String.format(
-                "Produto: \n[Nome = %s, Preço = %d, \nDataValidade = %s]",
+                "Produto: \n[Nome = %s, \nPreço = %d, \nDataValidade = %s]",
                 this.nome, this.preco, this.dataValidade
         );
     }
