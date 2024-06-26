@@ -20,10 +20,13 @@ public class Principal_Menu_Completo {
             System.out.println("|          (2) CRIAR UMA LOJA                              |");
             System.out.println("|             (3) Inserir uma loja (em um shopping)        |");
             System.out.println("|             (4) Remover uma loja (de um shopping)        |");
-            System.out.println("|          (5) CRIAR UM PRODUTO                            |");
-            System.out.println("|             (6) Inserir um produto (em uma loja)         |");
-            System.out.println("|             (7) remover um produto (de uma loja)         |");
-            System.out.println("|          (8) SAIR                                        |");
+            System.out.println("|             (5) Listar lojas de um shopping              |");
+            System.out.println("|          (6) CRIAR UM PRODUTO                            |");
+            System.out.println("|             (7) Inserir um produto (em uma loja)         |");
+            System.out.println("|             (8) remover um produto (de uma loja)         |");
+            System.out.println("|             (9) Listar produtos de uma loja              |");
+            System.out.println("|          (10) IMPRIMIR RELATORIO                         |");
+            System.out.println("|          (11) SAIR                                       |");
             System.out.println("|__________________________________________________________|");
             i = Teclado.leInt("\nDigite uma opção: ");
 
