@@ -56,7 +56,7 @@ public class Shopping {
         return removeu;
     }
 
-    public boolean insereProdutoEstoque (Produto p){
+    public boolean insereProdutoEstoque(Produto p){
         boolean achou = false;
         for (int i = 0; i < estoqueGeralProdutos.length; i++)
             if (estoqueGeralProdutos[i] == null) {
@@ -65,6 +65,18 @@ public class Shopping {
                 break;
             }
         return achou;
+    }
+
+    public boolean removeProdutoEstoque(String nomeProduto){
+        boolean removeu = false;
+        // Remover o produto
+        for (int i = 0; i < estoqueGeralProdutos.length; i++)
+            if (estoqueGeralProdutos[i] != null && estoqueGeralProdutos[i].getNome().equalsIgnoreCase(nomeProduto)){
+                estoqueGeralProdutos[i] = null;
+                removeu = true;
+                break;
+            }
+        return removeu;
     }
 
     public int quantidadeLojasPorTipo(String tipoLoja){
@@ -135,4 +147,7 @@ public class Shopping {
 
     public Loja[] getLojas() { return lojas; }
     public void setLojas(Loja[] lojas) { this.lojas = lojas; }
+
+    public Produto[] getEstoqueGeralProdutos() { return estoqueGeralProdutos; }
+    public void setEstoqueGeralProdutos(Produto[] estoqueGeralProdutos) { this.estoqueGeralProdutos = estoqueGeralProdutos; }
 }
