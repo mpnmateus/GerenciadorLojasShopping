@@ -13,16 +13,18 @@ public class Principal_Menu_Completo {
         int i = 0;
         while (i != 6) {
             System.out.println("\n");
-            System.out.println("|-----------------------------------------|");
-            System.out.println("|----------------MENU---------------------|");
-            System.out.println("|-----------------------------------------|");
-            System.out.println("|          (1) CRIAR UM SHOPPING          |");
-            System.out.println("|          (2) CRIAR UMA LOJA             |");
-            System.out.println("|             (3) remover uma loja        |");
-            System.out.println("|          (4) CRIAR UM PRODUTO           |");
-            System.out.println("|             (5) remover um produto      |");
-            System.out.println("|          (6) SAIR                       |");
-            System.out.println("|_________________________________________|");
+            System.out.println("|----------------------------------------------------------|");
+            System.out.println("|-------------------------------MENU-----------------------|");
+            System.out.println("|----------------------------------------------------------|");
+            System.out.println("|          (1) CRIAR UM SHOPPING                           |");
+            System.out.println("|          (2) CRIAR UMA LOJA                              |");
+            System.out.println("|             (3) Inserir uma loja (em um shopping)        |");
+            System.out.println("|             (4) Remover uma loja (de um shopping)        |");
+            System.out.println("|          (5) CRIAR UM PRODUTO                            |");
+            System.out.println("|             (6) Inserir um produto (em uma loja)         |");
+            System.out.println("|             (7) remover um produto (de uma loja)         |");
+            System.out.println("|          (8) SAIR                                        |");
+            System.out.println("|__________________________________________________________|");
             i = Teclado.leInt("\nDigite uma opção: ");
 
             switch (i) {
@@ -48,7 +50,7 @@ public class Principal_Menu_Completo {
                     shopping = new Shopping(nomeShopping, enderecoShopping, qntMaximaLojas);
                     break;
 
-                //Cria uma loja dentro do shopping
+                //Cria uma loja
                 case 2:
 
                     //Verifica se há shopping para incluir lojas nele
@@ -110,7 +112,7 @@ public class Principal_Menu_Completo {
                     break;
 
                 //Cria um Produto
-                case 4:
+                case 5:
 
                     String nomeProduto = Teclado.leString("Digite o nome do Produto: ");
                     int precoProduto = Teclado.leInt("Digite o preço do produto");
