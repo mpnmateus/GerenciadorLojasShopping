@@ -110,7 +110,7 @@ public class Loja {
 
         // Verificar se todos os produtos são null
         if (contadorProdutos == estoqueProdutos.length) {
-                System.out.println("Sem produtos cadastrados.");
+                System.out.println("Sem produtos cadastrados no estoque da loja.");
                 return removeu;
         }
 
