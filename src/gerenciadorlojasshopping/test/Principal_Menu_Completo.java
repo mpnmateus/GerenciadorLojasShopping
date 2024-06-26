@@ -36,15 +36,16 @@ public class Principal_Menu_Completo {
 
                     System.out.println("Informe o endereço do Shopping (Nome da rua, Cidade, Estado, Pais, Cep, " +
                             "Numero e Complemento)");
-                    String nomeRua = Teclado.leString();
-                    String cidade = Teclado.leString();
-                    String estado = Teclado.leString();
-                    String pais = Teclado.leString();
-                    String cep = Teclado.leString();
-                    String numero = Teclado.leString();
-                    String complemento = Teclado.leString();
+                    String nomeRuaShopping = Teclado.leString();
+                    String cidadeShopping = Teclado.leString();
+                    String estadoShopping = Teclado.leString();
+                    String paisShopping = Teclado.leString();
+                    String cepShopping = Teclado.leString();
+                    String numeroShopping = Teclado.leString();
+                    String complementoShopping = Teclado.leString();
 
-                    Endereco enderecoShopping = new Endereco(nomeRua, cidade, estado, pais, cep, numero, complemento);
+                    Endereco enderecoShopping = new Endereco(nomeRuaShopping, cidadeShopping, estadoShopping,
+                            paisShopping, cepShopping, numeroShopping, complementoShopping);
 
                     //Cria uma instância de shopping
                     shopping = new Shopping(nomeShopping, enderecoShopping, qntMaximaLojas);
