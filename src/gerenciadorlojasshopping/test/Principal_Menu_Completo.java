@@ -107,13 +107,32 @@ public class Principal_Menu_Completo {
                 //INSERE UMA LOJA DENTRO DE UM SHOPPING
                 case 3:
 
-                    /**
+                    String nomeShoppingInserirLoja = Teclado.leString("Digite o nome do shopping no qual quer inserir uma loja: ");
+                    String nomeLojaInserir = Teclado.leString("Digite o nome da loja que quer inserir no shopping " + nomeShoppingInserirLoja + ": ");
 
+                    Loja lojaInserir = null;
 
+                    if (shopping != null && shopping.getLojas() != null){ //garante que tem shopping inicializado e alguma loja no array lojas
+                        // Buscar loja pelo nome em um array de lojas previamente criado
+                        for (Loja buscaLoja : shopping.getLojas()){
+                            if (buscaLoja != null && buscaLoja.getNome().equalsIgnoreCase(nomeLojaInserir)) {
+                                lojaInserir = buscaLoja; //Se encontra o nome procurado, atribui o elemento buscaLoja ao objeto lojaInserir (para poder passar por parâmetro no insereLoja(lojaInserir)
+                                break; //Sai do laço
+                            }
+                        }
+                    }
+                    if (lojaInserir == null)
+                        System.out.println("Loja não encontrada");
 
-
-                     **/
-
+                    if(shopping.getNome().equalsIgnoreCase(nomeShoppingInserirLoja)){
+                        for(int j = 0; j < shopping.getLojas().length; j++)
+                            if(shopping.getLojas()[j] != null && shopping.getLojas()[j].getNome().equalsIgnoreCase(nomeLojaInserir))
+                                if(shopping.insereLoja(lojaInserir))
+                                    System.out.println("Loja inserida com sucesso no Shopping " + nomeShoppingInserirLoja);
+                                else
+                                    System.out.println("Não foi possível inserir a loja no shopping. Não há mais espaço!");
+                    }
+                    break;
 
 
                 //REMOVE UMA LOJA DE DENTRO DE UM SHOPPING
