@@ -233,23 +233,28 @@ public class Principal_Menu_Completo {
                     String nomeLojaParaRemoverProduto = Teclado.leString("Digite o nome da loja em que quer remover um produto: ");
                     String nomeProdutoRemoverLoja = Teclado.leString("Digite o nome do produto que quer remover: ");
 
-                    Produto produtoParaRemover = null;
 
-                    if(shopping != null && shopping.getLojas() != null){ //Tem um shopping e há pelo menos uma loja no seu array de lojas
-                        if(shopping.getNome().equalsIgnoreCase(nomeShoppingRemoveProduto)){ //Verifica nome do shopping
+                    if(shopping != null && shopping.getLojas() != null){ //Verifica se há um shopping e há, pelo menos, uma loja no seu array de lojas
+                        if(shopping.getNome().equalsIgnoreCase(nomeShoppingRemoveProduto)){ //Verifica se há um shopping com o nome almejado
                             boolean produtoRemovido = false;
 
                             //Percorre as lojas do shopping
-                            for (Loja buscaLojaRemover : shopping.getLojas())
+                            for (Loja buscaLojaRemover : shopping.getLojas()) { //Acessa o objeto de escopo local buscaLojaRemover em cada índice do array lojas (do shopping)
                                 //Varrer as lojas do shopping procurando por seu nome
                                 if (buscaLojaRemover != null && buscaLojaRemover.getNome().equalsIgnoreCase(nomeLojaParaRemoverProduto))
-                                    if(buscaLojaRemover.removeProduto(nomeProdutoRemoverLoja))
+                                    if (buscaLojaRemover.removeProduto(nomeProdutoRemoverLoja)) {
                                         System.out.println("Produto removido com sucesso da loja.");
                                         produtoRemovido = true;
+                                    } else
+                                        System.out.println("Produto não encontrado na loja");
+                                break; //assumindo que não há lojas com nome duplicado
+                            }
+                            if(!produtoRemovido)
+                                System.out.println("Loja não encontrada.");
 
 
-                        }
-
+                        } else
+                            System.out.println("Shopping não encontrado.");
 
 
                     } else
