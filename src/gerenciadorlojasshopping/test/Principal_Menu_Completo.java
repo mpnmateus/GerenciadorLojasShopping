@@ -77,7 +77,7 @@ public class Principal_Menu_Completo {
                         int anoFundacao = Teclado.leInt();
                         Data dataFundacao = new Data(diaFundacao, mesFundacao, anoFundacao);
 
-                        System.out.println("Informe o endereço da Loja (Nome da rua, Cidade, Estado, Pais, Cep, " +
+                        System.out.println("Informe o endereço da Matriz da Loja (Nome da rua, Cidade, Estado, Pais, Cep, " +
                                 "Numero e Complemento)");
                         String nomeRuaLoja = Teclado.leString();
                         String cidadeLoja = Teclado.leString();
@@ -176,6 +176,16 @@ public class Principal_Menu_Completo {
                     }
 
 
+                    //Insere produto criado no estoque geral de algum shopping
+                    String nomeShoppingIncluirNoEstoque = Teclado.leString("Digite o nome do shopping para escoar esse produto para seu estoque geral");
+                    if (shopping != null)
+                        if(shopping.getNome().equalsIgnoreCase(nomeShoppingIncluirNoEstoque))
+                            if(shopping.insereProdutoEstoque(produto))
+                                System.out.println("Produto incluído no estoque geral do shopping " + nomeShoppingIncluirNoEstoque + " com sucesso!");
+                            else
+                                System.out.println("Erro! Estoque geral do shopping" + nomeShoppingIncluirNoEstoque + " lotado");
+
+                    //Imprime informações do produto criado
                     System.out.println("Informações cadastradas no sistema!" +
                             "\nProduto: " + produto.getNome() + "\nPreço: R$ " + produto.getPreco() +
                             "\nData Validade:" + produto.getDataValidade());
@@ -255,12 +265,24 @@ public class Principal_Menu_Completo {
                 //LISTAR PRODUTOS DE UMA LOJA
                 case 9:
 
-                    /**
+                    String nomeLojaImprimir = Teclado.leString("Digite o nome da loja para a qual quer listar seus produtos: ");
+                    boolean lojaEncontrada = false;
 
+                    if (shopping != null && shopping.getLojas() != null){
+                        for (Loja buscarLojaImprimir : shopping.getLojas()) {
+                            if (buscarLojaImprimir != null && buscarLojaImprimir.getNome().equalsIgnoreCase(nomeLojaImprimir)) {
+                                buscarLojaImprimir.imprimeProdutos();
+                                lojaEncontrada = true;
+                                break; // Parar a busca assim que encontrar a loja
+                            }
+                        }
+                        if (!lojaEncontrada)
+                            System.out.println("Loja não encontradda.");
 
+                    } else
+                        System.out.println("Shopping não inicializado corretamente ou sem lojas cadastradas.");
+                    break;
 
-
-                     **/
 
                 //IMPRIMIR RELATORIO
                 case 10:
@@ -292,7 +314,7 @@ public class Principal_Menu_Completo {
 
         if (loja != null ) {
             System.out.println("\nEssas são as informações da(s) loja(s) criada(s) no sistema: ");
-            for (int num =0; i > shopping.getLojas().length; num++) {
+            for (int num = 0; i < shopping.getLojas().length; num++) {
                 if (shopping.getLojas()[num] != null) {
                     System.out.println("Os produtos da loja " + shopping.getLojas()[num].getNome() + "são: ");
                     shopping.getLojas()[num].imprimeProdutos();
