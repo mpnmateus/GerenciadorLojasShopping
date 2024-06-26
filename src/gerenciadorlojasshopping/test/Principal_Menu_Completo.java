@@ -20,10 +20,13 @@ public class Principal_Menu_Completo {
             System.out.println("|          (2) CRIAR UMA LOJA                              |");
             System.out.println("|             (3) Inserir uma loja (em um shopping)        |");
             System.out.println("|             (4) Remover uma loja (de um shopping)        |");
-            System.out.println("|          (5) CRIAR UM PRODUTO                            |");
-            System.out.println("|             (6) Inserir um produto (em uma loja)         |");
-            System.out.println("|             (7) remover um produto (de uma loja)         |");
-            System.out.println("|          (8) SAIR                                        |");
+            System.out.println("|             (5) Listar lojas de um shopping              |");
+            System.out.println("|          (6) CRIAR UM PRODUTO                            |");
+            System.out.println("|             (7) Inserir um produto (em uma loja)         |");
+            System.out.println("|             (8) remover um produto (de uma loja)         |");
+            System.out.println("|             (9) Listar produtos de uma loja              |");
+            System.out.println("|          (10) IMPRIMIR RELATORIO                         |");
+            System.out.println("|          (11) SAIR                                       |");
             System.out.println("|__________________________________________________________|");
             i = Teclado.leInt("\nDigite uma opção: ");
 
@@ -102,8 +105,27 @@ public class Principal_Menu_Completo {
                     }
                     break;
 
-                //Remove uma loja dentro do shopping
+                //INSERE UMA LOJA DENTRO DE UM SHOPPING
                 case 3:
+
+                    /**
+
+
+
+
+                     **/
+
+
+
+                //REMOVE UMA LOJA DE DENTRO DE UM SHOPPING
+                case 4:
+
+                    /**
+
+
+
+
+                     **/
 
                     boolean removeu = false;
 
@@ -120,8 +142,18 @@ public class Principal_Menu_Completo {
                     }
                     break;
 
-                //Cria um Produto
+                //LISTAR LOJAR DE UM SHOPPING
                 case 5:
+                    /**
+
+
+
+
+                     **/
+
+
+                //CRIA UM PRODUTO
+                case 6:
 
                     String nomeProduto = Teclado.leString("Digite o nome do Produto: ");
                     int precoProduto = Teclado.leInt("Digite o preço do produto");
@@ -157,9 +189,47 @@ public class Principal_Menu_Completo {
                             "\nData Validade:" + produto.getDataValidade());
                     break;
 
+                //INSERE UM PRODUTO EM UMA LOJA
+                case 7:
+                    /**
 
-                //Sai do programa
-                case 6:
+
+
+
+                     **/
+
+                //REMOVE UM PRODUTO DE UMA LOJA
+                case 8:
+
+                    /**
+
+
+
+
+                     **/
+
+                //LISTAR PRODUTOS DE UMA LOJA
+                case 9:
+
+                    /**
+
+
+
+
+                     **/
+
+                //IMPRIMIR RELATORIO
+                case 10:
+
+                    /**
+
+
+
+
+                     **/
+
+                //SAI DO PROGRAMA
+                case 11:
                     System.out.println("\nVocê saiu do menu!");
                     break;
                 default:
