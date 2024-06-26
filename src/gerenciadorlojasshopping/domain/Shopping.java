@@ -4,11 +4,19 @@ public class Shopping {
     private String nome;
     private Endereco endereco;
     private Loja [] lojas;
+    private Produto [] estoqueGeralProdutos;
 
     public Shopping (String nome, Endereco endereco, int qntMaximaLojas){
         this.nome = nome;
         this.endereco = endereco;
         this.lojas = new Loja[qntMaximaLojas];
+    }
+
+    public Shopping (String nome, Endereco endereco, int qntMaximaLojas, int qntMaximaProdutosEstoqueGeral){
+        this.nome = nome;
+        this.endereco = endereco;
+        this.lojas = new Loja[qntMaximaLojas];
+        this.estoqueGeralProdutos = new Produto[qntMaximaProdutosEstoqueGeral];
     }
 
     public boolean insereLoja(Loja loja){
@@ -46,6 +54,17 @@ public class Shopping {
                 break;
             }
         return removeu;
+    }
+
+    public boolean insereProdutoEstoque (Produto p){
+        boolean achou = false;
+        for (int i = 0; i < estoqueGeralProdutos.length; i++)
+            if (estoqueGeralProdutos[i] == null) {
+                estoqueGeralProdutos[i] = p;
+                achou = true;
+                break;
+            }
+        return achou;
     }
 
     public int quantidadeLojasPorTipo(String tipoLoja){
