@@ -194,7 +194,7 @@ public class Principal_Menu_Completo {
 
                 //INSERE UM PRODUTO EM UMA LOJA
                 case 7:
-                    String nomeShoppingInsereProduto = Teclado.leString("Digite o nome do shopping: ");
+                    String nomeShoppingInsereProduto = Teclado.leString("Digite o nome do shopping na qual a loja está inserida: ");
                     String nomeLojaParaInserirProduto = Teclado.leString("Digite o nome da loja em que quer adicionar um produto: ");
                     String nomeProdutoInserirLoja = Teclado.leString("Digite o nome do produto que quer inserir: ");
 
@@ -202,9 +202,9 @@ public class Principal_Menu_Completo {
 
                     if(shopping != null && shopping.getEstoqueGeralProdutos() != null)
                         // Buscar produto pelo nome em um array de produtos previamente criado
-                        for (Produto prod : shopping.getEstoqueGeralProdutos()) {
-                            if (produto != null && produto.getNome().equalsIgnoreCase(nomeProdutoInserirLoja)) {
-                                produtoParaInserir = prod;
+                        for (Produto buscaProdRemover : shopping.getEstoqueGeralProdutos()) {
+                            if (buscaProdRemover != null && buscaProdRemover.getNome().equalsIgnoreCase(nomeProdutoInserirLoja)) {
+                                produtoParaInserir = buscaProdRemover;
                                 break;
                             }
                         }
@@ -223,18 +223,39 @@ public class Principal_Menu_Completo {
                                 } else
                                     System.out.println("Não foi possível inserir o produto na loja. Estoque Cheio!");
                     }
-
+                    break;
 
 
                 //REMOVE UM PRODUTO DE UMA LOJA
                 case 8:
 
-                    /**
+                    String nomeShoppingRemoveProduto = Teclado.leString("Digite o nome do shopping na qual a loja está inserida: ");
+                    String nomeLojaParaRemoverProduto = Teclado.leString("Digite o nome da loja em que quer remover um produto: ");
+                    String nomeProdutoRemoverLoja = Teclado.leString("Digite o nome do produto que quer remover: ");
+
+                    Produto produtoParaRemover = null;
+
+                    if(shopping != null && shopping.getLojas() != null){ //Tem um shopping e há pelo menos uma loja no seu array de lojas
+                        if(shopping.getNome().equalsIgnoreCase(nomeShoppingRemoveProduto)){ //Verifica nome do shopping
+                            boolean produtoRemovido = false;
+
+                            //Percorre as lojas do shopping
+                            for (Loja buscaLojaRemover : shopping.getLojas())
+                                //Varrer as lojas do shopping procurando por seu nome
+                                if (buscaLojaRemover != null && buscaLojaRemover.getNome().equalsIgnoreCase(nomeLojaParaRemoverProduto))
+                                    if(buscaLojaRemover.removeProduto(nomeProdutoRemoverLoja))
+                                        System.out.println("Produto removido com sucesso da loja.");
+                                        produtoRemovido = true;
+
+
+                        }
 
 
 
+                    } else
+                        System.out.println("Shopping não inicializado corretamente ou sem lojas cadastradas no shopping.");
+                    break;
 
-                     **/
 
                 //LISTAR PRODUTOS DE UMA LOJA
                 case 9:
