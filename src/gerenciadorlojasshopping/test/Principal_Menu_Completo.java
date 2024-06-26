@@ -11,7 +11,7 @@ public class Principal_Menu_Completo {
         Shopping shopping = null;
 
         int i = 0;
-        while (i != 6) {
+        while (i != 11) {
             System.out.println("\n");
             System.out.println("|----------------------------------------------------------|");
             System.out.println("|-------------------------------MENU-----------------------|");
@@ -95,12 +95,9 @@ public class Principal_Menu_Completo {
                                 dataFundacao, qntMaximaProdutos);
 
 
-                        if (shopping.insereLoja(loja)) {
-                            System.out.println("Loja inserida com sucesso!");
-                            System.out.println("\nO tamanho da loja é: " + loja.tamanhoDaLoja());
-                            System.out.println("\n" + loja);
-                        } else
-                            System.out.println("Não há mais espaço para lojas no shopping.");
+
+                        System.out.println("\nO tamanho da loja é: " + loja.tamanhoDaLoja());
+
 
                         break;
 
@@ -169,15 +166,8 @@ public class Principal_Menu_Completo {
                     //Cria uma instância de produto
                     produto = new Produto(nomeProduto, precoProduto, dataValidade);
 
-                    if (shopping != null)
-                        if (shopping.insereProdutoEstoque(produto))
-                            System.out.println("Produto inserido no estoque geral do shopping");
-                        else
-                            System.out.println("Erro! O estoque geral do Shopping está cheio.");
-
 
                     //Verifica se o produto está vencido na data de 20/10/2023 (OK)
-
                     Data dataReferencia = new Data(20, 10, 2023);
                     if (produto.estaVencido(dataReferencia)) {
                         System.out.println("\nPRODUTO VENCIDO");
