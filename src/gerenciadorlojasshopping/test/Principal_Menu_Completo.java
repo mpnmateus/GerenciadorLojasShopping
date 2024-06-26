@@ -34,8 +34,10 @@ public class Principal_Menu_Completo {
 
                 //CRIA UM SHOPPING
                 case 1:
-                    int qntMaximaLojas = Teclado.leInt("\nDigite a quantidade máxima de Lojas que o Shopping pode ter: ");
+
                     String nomeShopping = Teclado.leString("Digite o nome do shopping: ");
+                    int qntMaximaLojas = Teclado.leInt("\nDigite a quantidade máxima de Lojas que o Shopping pode ter: ");
+                    int quantMaximaProdutosEstoqueGeral = Teclado.leInt("Digite a quantidade máxima que o estoque geral de produtos do shopping suporta: ");
 
                     System.out.println("Informe o endereço do Shopping (Nome da rua, Cidade, Estado, Pais, Cep, " +
                             "Numero e Complemento)");
@@ -51,7 +53,7 @@ public class Principal_Menu_Completo {
                             paisShopping, cepShopping, numeroShopping, complementoShopping);
 
                     //Cria uma instância de shopping
-                    shopping = new Shopping(nomeShopping, enderecoShopping, qntMaximaLojas);
+                    shopping = new Shopping(nomeShopping, enderecoShopping, qntMaximaLojas, quantMaximaProdutosEstoqueGeral);
                     break;
 
                 //CRIA UMA LOJA
@@ -142,7 +144,7 @@ public class Principal_Menu_Completo {
                     }
                     break;
 
-                //LISTAR LOJAR DE UM SHOPPING
+                //LISTAR LOJAS DE UM SHOPPING
                 case 5:
                     /**
 
@@ -167,12 +169,12 @@ public class Principal_Menu_Completo {
                     //Cria uma instância de produto
                     produto = new Produto(nomeProduto, precoProduto, dataValidade);
 
-                    if (loja == null)
-                        System.out.println("Não há estoque disponível.");
-                    else if (loja.insereProduto(produto)) {
-                        System.out.println("Produto inserido com sucesso!");
-                    } else
-                        System.out.println("Não há mais espaço para produtos no estoque");
+                    if (shopping != null)
+                        if (shopping.insereProdutoEstoque(produto))
+                            System.out.println("Produto inserido no estoque geral do shopping");
+                        else
+                            System.out.println("Erro! O estoque geral do Shopping está cheio.");
+
 
                     //Verifica se o produto está vencido na data de 20/10/2023 (OK)
 
@@ -189,14 +191,40 @@ public class Principal_Menu_Completo {
                             "\nData Validade:" + produto.getDataValidade());
                     break;
 
+
                 //INSERE UM PRODUTO EM UMA LOJA
                 case 7:
-                    /**
+                    String nomeShoppingInsereProduto = Teclado.leString("Digite o nome do shopping: ");
+                    String nomeLojaParaInserirProduto = Teclado.leString("Digite o nome da loja em que quer adicionar um produto: ");
+                    String nomeProdutoInserirLoja = Teclado.leString("Digite o nome do produto que quer inserir: ");
+
+                    Produto produtoParaInserir = null;
+
+                    if(shopping != null && shopping.getEstoqueGeralProdutos() != null)
+                        // Buscar produto pelo nome em um array de produtos previamente criado
+                        for (Produto prod : shopping.getEstoqueGeralProdutos()) {
+                            if (produto != null && produto.getNome().equalsIgnoreCase(nomeProdutoInserirLoja)) {
+                                produtoParaInserir = prod;
+                                break;
+                            }
+                        }
+
+                    if (produtoParaInserir == null) {
+                        System.out.println("Produto não encontrado no estoque geral.");
+                        break;
+                    }
+
+                    if(shopping.getNome().equalsIgnoreCase(nomeShoppingInsereProduto)){
+                        for(int j = 0; j < shopping.getLojas().length; j++)
+                            if(shopping.getLojas()[j] != null && shopping.getLojas()[j].getNome().equalsIgnoreCase(nomeLojaParaInserirProduto))
+                                if(shopping.getLojas()[j].insereProduto(produtoParaInserir)) {
+                                    System.out.println("Produto inserido com sucesso no estoque da loja " + nomeLojaParaInserirProduto);
+                                    shopping.removeProdutoEstoque(nomeProdutoInserirLoja);
+                                } else
+                                    System.out.println("Não foi possível inserir o produto na loja. Estoque Cheio!");
+                    }
 
 
-
-
-                     **/
 
                 //REMOVE UM PRODUTO DE UMA LOJA
                 case 8:
