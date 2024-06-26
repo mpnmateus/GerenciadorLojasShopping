@@ -29,7 +29,7 @@ public class Principal_Menu_Completo {
 
             switch (i) {
 
-                //Cria um Shopping
+                //CRIA UM SHOPPING
                 case 1:
                     int qntMaximaLojas = Teclado.leInt("\nDigite a quantidade máxima de Lojas que o Shopping pode ter: ");
                     String nomeShopping = Teclado.leString("Digite o nome do shopping: ");
@@ -51,7 +51,7 @@ public class Principal_Menu_Completo {
                     shopping = new Shopping(nomeShopping, enderecoShopping, qntMaximaLojas);
                     break;
 
-                //Cria uma loja
+                //CRIA UMA LOJA
                 case 2:
 
                     //Verifica se há shopping para incluir lojas nele
@@ -72,10 +72,18 @@ public class Principal_Menu_Completo {
                         int anoFundacao = Teclado.leInt();
                         Data dataFundacao = new Data(diaFundacao, mesFundacao, anoFundacao);
 
+                        System.out.println("Informe o endereço da Loja (Nome da rua, Cidade, Estado, Pais, Cep, " +
+                                "Numero e Complemento)");
+                        String nomeRuaLoja = Teclado.leString();
+                        String cidadeLoja = Teclado.leString();
+                        String estadoLoja = Teclado.leString();
+                        String paisLoja = Teclado.leString();
+                        String cepLoja = Teclado.leString();
+                        String numeroLoja = Teclado.leString();
+                        String complementoLoja = Teclado.leString();
 
-                        Endereco enderecoLoja = new Endereco(shopping.getEndereco().getNomeDaRua(), shopping.getEndereco().getCidade(),
-                                shopping.getEndereco().getEstado(), shopping.getEndereco().getPais(), shopping.getEndereco().getCep(),
-                                shopping.getEndereco().getNumero(), shopping.getEndereco().getComplemento());
+                        Endereco enderecoLoja = new Endereco(nomeRuaLoja, cidadeLoja, estadoLoja, paisLoja,
+                                cepLoja, numeroLoja, complementoLoja);
 
                         //Cria uma instância de loja
                         loja = new Loja(nomeLoja, qntFuncionarios, salarioBaseFuncionarios, enderecoLoja,
