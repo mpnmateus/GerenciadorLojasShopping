@@ -112,6 +112,7 @@ public class Principal_Menu_Completo {
 
                     Loja lojaInserir = null;
 
+                    //Atribui um objeto do tipo Loja para a variável lojaInserir if TRUE
                     if (shopping != null && shopping.getLojas() != null){ //garante que tem shopping inicializado e alguma loja no array lojas
                         // Buscar loja pelo nome em um array de lojas previamente criado
                         for (Loja buscaLoja : shopping.getLojas()){
@@ -124,7 +125,7 @@ public class Principal_Menu_Completo {
                     if (lojaInserir == null)
                         System.out.println("Loja não encontrada");
 
-                    if(shopping.getNome().equalsIgnoreCase(nomeShoppingInserirLoja)){
+                    if(shopping != null && shopping.getNome().equalsIgnoreCase(nomeShoppingInserirLoja)){
                         for(int j = 0; j < shopping.getLojas().length; j++)
                             if(shopping.getLojas()[j] != null && shopping.getLojas()[j].getNome().equalsIgnoreCase(nomeLojaInserir))
                                 if(shopping.insereLoja(lojaInserir))
@@ -138,26 +139,34 @@ public class Principal_Menu_Completo {
                 //REMOVE UMA LOJA DE DENTRO DE UM SHOPPING
                 case 4:
 
-                    /**
+                    String nomeShoppingRemoveLoja = Teclado.leString("Digite o nome do shopping na qual a loja está inserida: ");
+                    String nomeLojaParaRemover = Teclado.leString("Digite o nome da loja em que quer remover um produto: ");
+
+                    if(shopping != null && shopping.getLojas() != null){ //Verifica se há um shopping e há, pelo menos, uma loja no seu array de lojas
+                        if(shopping.getNome().equalsIgnoreCase(nomeShoppingRemoveLoja)){ //Verifica se há um shopping com o nome almejado
+                            boolean lojaRemovida = false;
+
+                            //Percorre as lojas do shopping
+                            for (Loja buscaLojaRemoverShopping : shopping.getLojas()) { //Acessa o objeto de escopo local buscaLojaRemover em cada índice do array lojas (do shopping)
+                                //Procura um objeto do tipo Loja no array getLojas(). Achando, verifica se o nome condiz
+                                if (buscaLojaRemoverShopping != null && buscaLojaRemoverShopping.getNome().equalsIgnoreCase(nomeLojaParaRemover))
+                                    if (shopping.removeLoja(nomeLojaParaRemover)) {
+                                        System.out.println("Loja removida com sucesso do shopping " + nomeShoppingRemoveLoja + ".");
+                                        lojaRemovida = true;
+                                    } else
+                                        System.out.println("Loja não encontrada no shopping " + nomeShoppingRemoveLoja + ".");
+                                break; //assumindo que não há lojas com nome duplicado
+                            }
+                            if(!lojaRemovida)
+                                System.out.println("Loja não encontrada.");
 
 
+                        } else
+                            System.out.println("Shopping não encontrado.");
 
 
-                     **/
-
-                    boolean removeu = false;
-
-                    while(!removeu) {
-
-                        String nomeLojaParaRemover = Teclado.leString("\nDigite o nome da loja que quer remover: ");
-
-                        if (shopping != null && shopping.removeLoja(nomeLojaParaRemover)) {
-                            System.out.println("Loja " + nomeLojaParaRemover + " removida com sucesso");
-                            removeu = true;
-                        } else if (shopping != null && !shopping.removeLoja(nomeLojaParaRemover)) {
-                            System.out.println("Loja não removida. Digite novamente.");
-                        }
-                    }
+                    } else
+                        System.out.println("Shopping não inicializado corretamente ou sem lojas cadastradas no shopping.");
                     break;
 
                 //LISTAR LOJAS DE UM SHOPPING
