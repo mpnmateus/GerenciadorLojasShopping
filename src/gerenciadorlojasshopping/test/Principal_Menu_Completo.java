@@ -118,14 +118,43 @@ public class Principal_Menu_Completo {
                                 System.out.println("\nO tamanho da loja é: " + lojaAlimentacao.tamanhoDaLoja());
                                 break;
 
+                            case 2:
+                                lojaBijuteria = new Loja(nomeLoja, qntFuncionarios, salarioBaseFuncionarios, enderecoLoja,
+                                        dataFundacao, qntMaximaProdutos);
+
+                                shopping.insereLoja(lojaBijuteria);
+
+                                System.out.println("\nO tamanho da loja é: " + lojaBijuteria.tamanhoDaLoja());
+                                break;
+
+                            case 3:
+                                lojaCosmetico = new Loja(nomeLoja, qntFuncionarios, salarioBaseFuncionarios, enderecoLoja,
+                                        dataFundacao, qntMaximaProdutos);
+
+                                shopping.insereLoja(lojaCosmetico);
+
+                                System.out.println("\nO tamanho da loja é: " + lojaCosmetico.tamanhoDaLoja());
+                                break;
+
+                            case 4:
+                                lojaInformatica = new Loja(nomeLoja, qntFuncionarios, salarioBaseFuncionarios, enderecoLoja,
+                                        dataFundacao, qntMaximaProdutos);
+
+                                shopping.insereLoja(lojaInformatica);
+
+                                System.out.println("\nO tamanho da loja é: " + lojaInformatica.tamanhoDaLoja());
+                                break;
+
+                            case 5:
+                                lojaVestuario = new Loja(nomeLoja, qntFuncionarios, salarioBaseFuncionarios, enderecoLoja,
+                                        dataFundacao, qntMaximaProdutos);
+
+                                shopping.insereLoja(lojaVestuario);
+
+                                System.out.println("\nO tamanho da loja é: " + lojaVestuario.tamanhoDaLoja());
+                                break;
+
                         }
-                        loja = new Loja(nomeLoja, qntFuncionarios, salarioBaseFuncionarios, enderecoLoja,
-                                dataFundacao, qntMaximaProdutos);
-
-
-
-                        System.out.println("\nO tamanho da loja é: " + loja.tamanhoDaLoja());
-
 
                         break;
 
