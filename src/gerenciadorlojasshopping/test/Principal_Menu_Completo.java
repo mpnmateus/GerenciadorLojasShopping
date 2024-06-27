@@ -8,6 +8,11 @@ public class Principal_Menu_Completo {
 
         Produto produto = null;
         Loja loja = null;
+        Loja lojaAlimentacao = null;
+        Loja lojaBijuteria = null;
+        Loja lojaCosmetico = null;
+        Loja lojaInformatica = null;
+        Loja lojaVestuario = null;
         Shopping shopping = null;
 
         int i = 0;
@@ -64,6 +69,18 @@ public class Principal_Menu_Completo {
                         System.out.println("Tem de haver um shopping criado para incluir alguma loja.");
                     else {
 
+                        System.out.println("\n");
+                        System.out.println("|----------------------------------------------------------|");
+                        System.out.println("|---------------------- TIPOS DE LOJA ---------------------|");
+                        System.out.println("|----------------------------------------------------------|");
+                        System.out.println("|          (1) Alimentação                                 |");
+                        System.out.println("|          (2) Bijuteria                                   |");
+                        System.out.println("|          (3) Cosmético                                   |");
+                        System.out.println("|          (4) Informática                                 |");
+                        System.out.println("|          (5) Vestuário                                   |");
+                        System.out.println("|__________________________________________________________|");
+
+                        int tipoLoja = Teclado.leInt("Digite o tipo da loja: ");
 
                         String nomeLoja = Teclado.leString("Digite o nome da Loja: ");
                         int qntFuncionarios = Teclado.leInt("Digite a quantidade de funcionários: ");
@@ -90,7 +107,18 @@ public class Principal_Menu_Completo {
                         Endereco enderecoLoja = new Endereco(nomeRuaLoja, cidadeLoja, estadoLoja, paisLoja,
                                 cepLoja, numeroLoja, complementoLoja);
 
-                        //Cria uma instância de loja
+                        //Cria uma instância de loja à depender do tipo
+                        switch (tipoLoja) {
+                            case 1:
+                                lojaAlimentacao = new Loja(nomeLoja, qntFuncionarios, salarioBaseFuncionarios, enderecoLoja,
+                                        dataFundacao, qntMaximaProdutos);
+
+                                shopping.insereLoja(lojaAlimentacao);
+
+                                System.out.println("\nO tamanho da loja é: " + lojaAlimentacao.tamanhoDaLoja());
+                                break;
+
+                        }
                         loja = new Loja(nomeLoja, qntFuncionarios, salarioBaseFuncionarios, enderecoLoja,
                                 dataFundacao, qntMaximaProdutos);
 
