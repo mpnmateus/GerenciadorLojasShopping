@@ -113,7 +113,10 @@ public class Principal_Menu_Completo {
                                 lojaAlimentacao = new Loja(nomeLoja, qntFuncionarios, salarioBaseFuncionarios, enderecoLoja,
                                         dataFundacao, qntMaximaProdutos);
 
-                                shopping.insereLoja(lojaAlimentacao);
+                                if(shopping.insereLoja(lojaAlimentacao))
+                                    System.out.println("Loja inserida com sucesso");
+                                else
+                                    System.out.println("Erro ao inserir a loja. Capacidade máxima atingida.");
 
                                 System.out.println("\nO tamanho da loja é: " + lojaAlimentacao.tamanhoDaLoja());
                                 break;
@@ -122,7 +125,10 @@ public class Principal_Menu_Completo {
                                 lojaBijuteria = new Loja(nomeLoja, qntFuncionarios, salarioBaseFuncionarios, enderecoLoja,
                                         dataFundacao, qntMaximaProdutos);
 
-                                shopping.insereLoja(lojaBijuteria);
+                                if(shopping.insereLoja(lojaBijuteria))
+                                    System.out.println("Loja inserida com sucesso");
+                                else
+                                    System.out.println("Erro ao inserir a loja. Capacidade máxima atingida.");
 
                                 System.out.println("\nO tamanho da loja é: " + lojaBijuteria.tamanhoDaLoja());
                                 break;
@@ -131,7 +137,10 @@ public class Principal_Menu_Completo {
                                 lojaCosmetico = new Loja(nomeLoja, qntFuncionarios, salarioBaseFuncionarios, enderecoLoja,
                                         dataFundacao, qntMaximaProdutos);
 
-                                shopping.insereLoja(lojaCosmetico);
+                                if(shopping.insereLoja(lojaCosmetico))
+                                    System.out.println("Loja inserida com sucesso");
+                                else
+                                    System.out.println("Erro ao inserir a loja. Capacidade máxima atingida.");
 
                                 System.out.println("\nO tamanho da loja é: " + lojaCosmetico.tamanhoDaLoja());
                                 break;
@@ -140,7 +149,10 @@ public class Principal_Menu_Completo {
                                 lojaInformatica = new Loja(nomeLoja, qntFuncionarios, salarioBaseFuncionarios, enderecoLoja,
                                         dataFundacao, qntMaximaProdutos);
 
-                                shopping.insereLoja(lojaInformatica);
+                                if(shopping.insereLoja(lojaInformatica))
+                                    System.out.println("Loja inserida com sucesso");
+                                else
+                                    System.out.println("Erro ao inserir a loja. Capacidade máxima atingida.");
 
                                 System.out.println("\nO tamanho da loja é: " + lojaInformatica.tamanhoDaLoja());
                                 break;
@@ -149,7 +161,10 @@ public class Principal_Menu_Completo {
                                 lojaVestuario = new Loja(nomeLoja, qntFuncionarios, salarioBaseFuncionarios, enderecoLoja,
                                         dataFundacao, qntMaximaProdutos);
 
-                                shopping.insereLoja(lojaVestuario);
+                                if(shopping.insereLoja(lojaVestuario))
+                                    System.out.println("Loja inserida com sucesso");
+                                else
+                                    System.out.println("Erro ao inserir a loja. Capacidade máxima atingida.");
 
                                 System.out.println("\nO tamanho da loja é: " + lojaVestuario.tamanhoDaLoja());
                                 break;
