@@ -191,22 +191,8 @@ public class Principal_Menu_Completo {
                     }
                     break;
 
-                //LISTAR LOJAS DE UM SHOPPING
-                case 4:
-                    if (shopping == null) {
-                        System.out.println("Nenhum shopping criado.");
-                        break;
-                    }
-                    for (Loja lojaLista : shopping.getLojas()) {
-                        if (lojaLista != null) {
-                            System.out.println(loja.getNome()+ "| ");
-                        }
-                    }
-                    break;
-
-
                 //CRIA UM PRODUTO E INSERE NO ESTOQUE GERAL DO SHOPPING
-                case 5:
+                case 4:
                     if (shopping == null) {
                         System.out.println("Nenhum shopping criado.");
                         break;
@@ -238,6 +224,11 @@ public class Principal_Menu_Completo {
                         System.out.println("Erro ao inserir o produto. Estoque geral cheio.");
                     }
                     break;
+
+
+                //CRIA UM PRODUTO E INSERE NO ESTOQUE GERAL DO SHOPPING
+                case 5:
+
 
 
                 //INSERE UM PRODUTO EM UMA LOJA
@@ -316,9 +307,9 @@ public class Principal_Menu_Completo {
                         System.out.println("Nenhum shopping criado.");
                         break;
                     }
-                    for (Produto produto : shopping.getEstoqueGeralProdutos()) {
-                        if (produto != null) {
-                            System.out.println(produto);
+                    for (Produto produtoListarEstoqueGeral : shopping.getEstoqueGeralProdutos()) {
+                        if (produtoListarEstoqueGeral != null) {
+                            System.out.println(produtoListarEstoqueGeral);
                         }
                     }
                     break;
