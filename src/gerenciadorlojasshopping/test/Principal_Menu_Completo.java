@@ -309,30 +309,22 @@ public class Principal_Menu_Completo {
                         System.out.println("Shopping não inicializado corretamente ou sem lojas cadastradas no shopping.");
                     break;
 
-                //Listar todos os Produtos do estoque geral de um Shopping
-                //
+                //LISTA TODOS OS PRODUTOS DO ESTOQUE GERAL DO SHOPPING
                 case 8:
 
-                    String nomeLojaImprimir = Teclado.leString("Digite o nome da loja para a qual quer listar seus produtos: ");
-                    boolean lojaEncontrada = false;
-
-                    if (shopping != null && shopping.getLojas() != null){
-                        for (Loja buscarLojaImprimir : shopping.getLojas()) {
-                            if (buscarLojaImprimir != null && buscarLojaImprimir.getNome().equalsIgnoreCase(nomeLojaImprimir)) {
-                                buscarLojaImprimir.imprimeProdutos();
-                                lojaEncontrada = true;
-                                break; // Parar a busca assim que encontrar a loja
-                            }
+                    if (shopping == null) {
+                        System.out.println("Nenhum shopping criado.");
+                        break;
+                    }
+                    for (Produto produto : shopping.getEstoqueGeralProdutos()) {
+                        if (produto != null) {
+                            System.out.println(produto);
                         }
-                        if (!lojaEncontrada)
-                            System.out.println("Loja não encontradda.");
-
-                    } else
-                        System.out.println("Shopping não inicializado corretamente ou sem lojas cadastradas.");
+                    }
                     break;
 
 
-                //LISTA TODOS OS PRODUTOS DE UMA LOJA DE UM SHOPPING
+                //LISTA TODOS OS PRODUTOS DE UMA LOJA DO SHOPPING
                 case 9:
 
                     if (shopping == null) {
@@ -351,9 +343,9 @@ public class Principal_Menu_Completo {
                         System.out.println("Loja não encontrada.");
                         break;
                     }
-                    for (Produto produtoListar : lojaParaListarProdutos.getEstoqueProdutos()) {
-                        if (produtoListar != null) {
-                            System.out.println(produtoListar);
+                    for (Produto produtoListarLoja : lojaParaListarProdutos.getEstoqueProdutos()) {
+                        if (produtoListarLoja != null) {
+                            System.out.println(produtoListarLoja);
                         }
                     }
                     break;
