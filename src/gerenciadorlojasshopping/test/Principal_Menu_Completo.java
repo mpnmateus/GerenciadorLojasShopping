@@ -18,21 +18,21 @@ public class Principal_Menu_Completo {
         int i = 0;
         while (i != 11) {
             System.out.println("\n");
-            System.out.println("|----------------------------------------------------------|");
-            System.out.println("|-------------------------------MENU-----------------------|");
-            System.out.println("|----------------------------------------------------------|");
-            System.out.println("|          (1) CRIAR UM SHOPPING                           |");
-            System.out.println("|          (2) CRIAR UMA LOJA                              |");
-            System.out.println("|             (3) Inserir uma loja (em um shopping)        |");
-            System.out.println("|             (4) Remover uma loja (de um shopping)        |");
-            System.out.println("|             (5) Listar lojas de um shopping              |");
-            System.out.println("|          (6) CRIAR UM PRODUTO                            |");
-            System.out.println("|             (7) Inserir um produto (em uma loja)         |");
-            System.out.println("|             (8) remover um produto (de uma loja)         |");
-            System.out.println("|             (9) Listar produtos de uma loja              |");
-            System.out.println("|          (10) IMPRIMIR RELATORIO                         |");
-            System.out.println("|          (11) SAIR                                       |");
-            System.out.println("|__________________________________________________________|");
+            System.out.println("|---------------------------------------------------------------------|");
+            System.out.println("|-----------------------------------MENU------------------------------|");
+            System.out.println("|---------------------------------------------------------------------|");
+            System.out.println("|          (1)  Criar um Shopping                                     |");
+            System.out.println("|          (2)  Inserir uma Loja                                      |");
+            System.out.println("|          (3)  Remover uma Loja (de um shopping)                     |");
+            System.out.println("|          (4)  Criar um Produto e inserir no estoque geral           |");
+            System.out.println("|          (5)  Inserir um Produto em uma Loja                        |");
+            System.out.println("|          (6)  Remover um Produto de uma Loja                        |");
+            System.out.println("|          (7)  Listar todas as Lojas de um Shopping                  |");
+            System.out.println("|          (8)  Listar todos os Produtos do estoque geral do Shopping |");
+            System.out.println("|          (9)  Listar todos os Produtos de uma Loja de um Shopping   |");
+            System.out.println("|          (10) Imprimir relatório do Shopping                        |");
+            System.out.println("|          (11) Sair                                                  |");
+            System.out.println("|_____________________________________________________________________|");
             i = Teclado.leInt("\nDigite uma opção: ");
 
             switch (i) {
@@ -170,90 +170,47 @@ public class Principal_Menu_Completo {
                                 break;
 
                         }
-
                         break;
 
                     }
                     break;
 
-                //INSERE UMA LOJA DENTRO DE UM SHOPPING
-                case 3:
-
-                    String nomeShoppingInserirLoja = Teclado.leString("Digite o nome do shopping no qual quer inserir uma loja: ");
-                    String nomeLojaInserir = Teclado.leString("Digite o nome da loja que quer inserir no shopping " + nomeShoppingInserirLoja + ": ");
-
-                    Loja lojaInserir = null;
-
-                    //Atribui um objeto do tipo Loja para a variável lojaInserir if TRUE
-                    if (shopping != null && shopping.getLojas() != null){ //garante que tem shopping inicializado e alguma loja no array lojas
-                        // Buscar loja pelo nome em um array de lojas previamente criado
-                        for (Loja buscaLoja : shopping.getLojas()){
-                            if (buscaLoja != null && buscaLoja.getNome().equalsIgnoreCase(nomeLojaInserir)) {
-                                lojaInserir = buscaLoja; //Se encontra o nome procurado, atribui o elemento buscaLoja ao objeto lojaInserir (para poder passar por parâmetro no insereLoja(lojaInserir)
-                                break; //Sai do laço
-                            }
-                        }
-                    }
-                    if (lojaInserir == null)
-                        System.out.println("Loja não encontrada");
-
-                    if(shopping != null && shopping.getNome().equalsIgnoreCase(nomeShoppingInserirLoja)){
-                        for(int j = 0; j < shopping.getLojas().length; j++)
-                            if(shopping.getLojas()[j] != null && shopping.getLojas()[j].getNome().equalsIgnoreCase(nomeLojaInserir))
-                                if(shopping.insereLoja(lojaInserir))
-                                    System.out.println("Loja inserida com sucesso no Shopping " + nomeShoppingInserirLoja);
-                                else
-                                    System.out.println("Não foi possível inserir a loja no shopping. Não há mais espaço!");
-                    }
-                    break;
-
 
                 //REMOVE UMA LOJA DE DENTRO DE UM SHOPPING
-                case 4:
+                case 3:
 
-                    String nomeShoppingRemoveLoja = Teclado.leString("Digite o nome do shopping na qual a loja está inserida: ");
-                    String nomeLojaParaRemover = Teclado.leString("Digite o nome da loja em que quer remover um produto: ");
-
-                    if(shopping != null && shopping.getLojas() != null){ //Verifica se há um shopping e há, pelo menos, uma loja no seu array de lojas
-                        if(shopping.getNome().equalsIgnoreCase(nomeShoppingRemoveLoja)){ //Verifica se há um shopping com o nome almejado
-                            boolean lojaRemovida = false;
-
-                            //Percorre as lojas do shopping
-                            for (Loja buscaLojaRemoverShopping : shopping.getLojas()) { //Acessa o objeto de escopo local buscaLojaRemover em cada índice do array lojas (do shopping)
-                                //Procura um objeto do tipo Loja no array getLojas(). Achando, verifica se o nome condiz
-                                if (buscaLojaRemoverShopping != null && buscaLojaRemoverShopping.getNome().equalsIgnoreCase(nomeLojaParaRemover))
-                                    if (shopping.removeLoja(nomeLojaParaRemover)) {
-                                        System.out.println("Loja removida com sucesso do shopping " + nomeShoppingRemoveLoja + ".");
-                                        lojaRemovida = true;
-                                    } else
-                                        System.out.println("Loja não encontrada no shopping " + nomeShoppingRemoveLoja + ".");
-                                break; //assumindo que não há lojas com nome duplicado
-                            }
-                            if(!lojaRemovida)
-                                System.out.println("Loja não encontrada.");
-
-
-                        } else
-                            System.out.println("Shopping não encontrado.");
-
-
-                    } else
-                        System.out.println("Shopping não inicializado corretamente ou sem lojas cadastradas no shopping.");
+                    if (shopping == null){
+                        System.out.println("Nenhum shopping criado");
+                        break;
+                    }
+                    String nomeLojaRemover = Teclado.leString("Digite o nome da loja a ser removida: ");
+                    if(shopping.removeLoja(nomeLojaRemover)) {
+                        System.out.println("Loja removida com sucesso");
+                    } else {
+                        System.out.println("Erro ao remover a loja. Loja não encontrada.");
+                    }
                     break;
 
                 //LISTAR LOJAS DE UM SHOPPING
+                case 4:
+                    if (shopping == null) {
+                        System.out.println("Nenhum shopping criado.");
+                        break;
+                    }
+                    for (Loja lojaLista : shopping.getLojas()) {
+                        if (lojaLista != null) {
+                            System.out.println(loja.getNome()+ "| ");
+                        }
+                    }
+                    break;
+
+
+                //CRIA UM PRODUTO E INSERE NO ESTOQUE GERAL DO SHOPPING
                 case 5:
-                    /**
-
-
-
-
-                     **/
-
-
-                //CRIA UM PRODUTO
-                case 6:
-
+                    if (shopping == null) {
+                        System.out.println("Nenhum shopping criado.");
+                        break;
+                    }
                     String nomeProduto = Teclado.leString("Digite o nome do Produto: ");
                     int precoProduto = Teclado.leInt("Digite o preço do produto");
 
@@ -275,25 +232,16 @@ public class Principal_Menu_Completo {
                         System.out.println("\nPRODUTO NÃO VENCIDO");
                     }
 
-
-                    //Insere produto criado no estoque geral de algum shopping
-                    String nomeShoppingIncluirNoEstoque = Teclado.leString("Digite o nome do shopping para escoar esse produto para seu estoque geral");
-                    if (shopping != null)
-                        if(shopping.getNome().equalsIgnoreCase(nomeShoppingIncluirNoEstoque))
-                            if(shopping.insereProdutoEstoque(produto))
-                                System.out.println("Produto incluído no estoque geral do shopping " + nomeShoppingIncluirNoEstoque + " com sucesso!");
-                            else
-                                System.out.println("Erro! Estoque geral do shopping" + nomeShoppingIncluirNoEstoque + " lotado");
-
-                    //Imprime informações do produto criado
-                    System.out.println("Informações cadastradas no sistema!" +
-                            "\nProduto: " + produto.getNome() + "\nPreço: R$ " + produto.getPreco() +
-                            "\nData Validade:" + produto.getDataValidade());
+                    if (shopping.insereProdutoEstoque(produto)) {
+                        System.out.println("Produto inserido no estoque geral com sucesso!");
+                    } else {
+                        System.out.println("Erro ao inserir o produto. Estoque geral cheio.");
+                    }
                     break;
 
 
                 //INSERE UM PRODUTO EM UMA LOJA
-                case 7:
+                case 6:
                     String nomeShoppingInsereProduto = Teclado.leString("Digite o nome do shopping na qual a loja está inserida: ");
                     String nomeLojaParaInserirProduto = Teclado.leString("Digite o nome da loja em que quer adicionar um produto: ");
                     String nomeProdutoInserirLoja = Teclado.leString("Digite o nome do produto que quer inserir: ");
@@ -327,7 +275,7 @@ public class Principal_Menu_Completo {
 
 
                 //REMOVE UM PRODUTO DE UMA LOJA
-                case 8:
+                case 7:
 
                     String nomeShoppingRemoveProduto = Teclado.leString("Digite o nome do shopping na qual a loja está inserida: ");
                     String nomeLojaParaRemoverProduto = Teclado.leString("Digite o nome da loja em que quer remover um produto: ");
@@ -363,7 +311,7 @@ public class Principal_Menu_Completo {
 
 
                 //LISTAR PRODUTOS DE UMA LOJA
-                case 9:
+                case 8:
 
                     String nomeLojaImprimir = Teclado.leString("Digite o nome da loja para a qual quer listar seus produtos: ");
                     boolean lojaEncontrada = false;
@@ -385,7 +333,7 @@ public class Principal_Menu_Completo {
 
 
                 //IMPRIMIR RELATORIO
-                case 10:
+                case 9:
 
                     /**
 
@@ -395,7 +343,7 @@ public class Principal_Menu_Completo {
                      **/
 
                 //SAI DO PROGRAMA
-                case 11:
+                case 10:
                     System.out.println("\nVocê saiu do menu!");
                     break;
                 default:
