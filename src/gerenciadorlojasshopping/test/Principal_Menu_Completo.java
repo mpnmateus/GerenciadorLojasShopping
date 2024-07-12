@@ -61,7 +61,7 @@ public class Principal_Menu_Completo {
                     shopping = new Shopping(nomeShopping, enderecoShopping, qntMaximaLojas, quantMaximaProdutosEstoqueGeral);
                     break;
 
-                //CRIA UMA LOJA
+                //CRIA UMA LOJA E INSERE DENTRO DO SHOPPING
                 case 2:
 
                     //Verifica se há shopping para incluir lojas nele
@@ -309,8 +309,8 @@ public class Principal_Menu_Completo {
                         System.out.println("Shopping não inicializado corretamente ou sem lojas cadastradas no shopping.");
                     break;
 
-
-                //LISTAR PRODUTOS DE UMA LOJA
+                //Listar todos os Produtos do estoque geral de um Shopping
+                //
                 case 8:
 
                     String nomeLojaImprimir = Teclado.leString("Digite o nome da loja para a qual quer listar seus produtos: ");
@@ -332,8 +332,34 @@ public class Principal_Menu_Completo {
                     break;
 
 
-                //IMPRIMIR RELATORIO
+                //LISTA TODOS OS PRODUTOS DE UMA LOJA DE UM SHOPPING
                 case 9:
+
+                    if (shopping == null) {
+                        System.out.println("Nenhum shopping criado.");
+                        break;
+                    }
+                    String nomeLojaParaListarProdutos = Teclado.leString("Digite o nome da loja da qual quer listar todos os produtos: ");
+                    Loja lojaParaListarProdutos = null;
+                    for (Loja lojaShopping : shopping.getLojas()) {
+                        if (lojaShopping != null && lojaShopping.getNome().equalsIgnoreCase(nomeLojaParaListarProdutos)) {
+                            lojaParaListarProdutos = lojaShopping;
+                            break;
+                        }
+                    }
+                    if (lojaParaListarProdutos == null) {
+                        System.out.println("Loja não encontrada.");
+                        break;
+                    }
+                    for (Produto produtoListar : lojaParaListarProdutos.getEstoqueProdutos()) {
+                        if (produtoListar != null) {
+                            System.out.println(produtoListar);
+                        }
+                    }
+                    break;
+
+                //IMPRIME RELATÓRIO DO SHOPPING
+                case 10:
 
                     /**
 
@@ -343,7 +369,7 @@ public class Principal_Menu_Completo {
                      **/
 
                 //SAI DO PROGRAMA
-                case 10:
+                case 11:
                     System.out.println("\nVocê saiu do menu!");
                     break;
                 default:
