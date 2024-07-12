@@ -226,78 +226,90 @@ public class Principal_Menu_Completo {
                     break;
 
 
-                //CRIA UM PRODUTO E INSERE NO ESTOQUE GERAL DO SHOPPING
-                case 5:
-
-
-
                 //INSERE UM PRODUTO EM UMA LOJA
-                case 6:
-                    String nomeShoppingInsereProduto = Teclado.leString("Digite o nome do shopping na qual a loja está inserida: ");
-                    String nomeLojaParaInserirProduto = Teclado.leString("Digite o nome da loja em que quer adicionar um produto: ");
-                    String nomeProdutoInserirLoja = Teclado.leString("Digite o nome do produto que quer inserir: ");
-
-                    Produto produtoParaInserir = null;
-
-                    if(shopping != null && shopping.getEstoqueGeralProdutos() != null)
-                        // Buscar produto pelo nome em um array de produtos previamente criado
-                        for (Produto buscaProdRemover : shopping.getEstoqueGeralProdutos()) {
-                            if (buscaProdRemover != null && buscaProdRemover.getNome().equalsIgnoreCase(nomeProdutoInserirLoja)) {
-                                produtoParaInserir = buscaProdRemover;
-                                break;
-                            }
+                case 5:
+                    if (shopping == null) {
+                        System.out.println("Nenhum shopping criado.");
+                        break;
+                    }
+                    String nomeLojaParaInserirProduto = Teclado.leString("Digite o nome da loja: ");
+                    Loja lojaParaInserirProduto = null;
+                    for (Loja lojaShopping : shopping.getLojas()) {
+                        if (lojaShopping != null && lojaShopping.getNome().equalsIgnoreCase(nomeLojaParaInserirProduto)) {
+                            lojaParaInserirProduto = lojaShopping;
+                            break;
                         }
-
+                    }
+                    if (lojaParaInserirProduto == null) {
+                        System.out.println("Loja não encontrada.");
+                        break;
+                    }
+                    String nomeProdutoParaInserir = Teclado.leString("Digite o nome do produto: ");
+                    Produto produtoParaInserir = null;
+                    for (Produto produtoInserirLoja : shopping.getEstoqueGeralProdutos()) {
+                        if (produtoInserirLoja != null && produtoInserirLoja.getNome().equalsIgnoreCase(nomeProdutoParaInserir)) {
+                            produtoParaInserir = produtoInserirLoja;
+                            break;
+                        }
+                    }
                     if (produtoParaInserir == null) {
                         System.out.println("Produto não encontrado no estoque geral.");
                         break;
                     }
-
-                    if(shopping.getNome().equalsIgnoreCase(nomeShoppingInsereProduto)){
-                        for(int j = 0; j < shopping.getLojas().length; j++)
-                            if(shopping.getLojas()[j] != null && shopping.getLojas()[j].getNome().equalsIgnoreCase(nomeLojaParaInserirProduto))
-                                if(shopping.getLojas()[j].insereProduto(produtoParaInserir)) {
-                                    System.out.println("Produto inserido com sucesso no estoque da loja " + nomeLojaParaInserirProduto);
-                                    shopping.removeProdutoEstoque(nomeProdutoInserirLoja);
-                                } else
-                                    System.out.println("Não foi possível inserir o produto na loja. Estoque Cheio!");
+                    // Remove o produto do estoque geral do Shopping
+                    if (shopping.removeProdutoEstoque(nomeProdutoParaInserir)) {
+                        // Insere o produto na loja
+                        if (lojaParaInserirProduto.insereProduto(produtoParaInserir)) {
+                            System.out.println("Produto inserido na loja com sucesso!");
+                        } else {
+                            // Reinsere o produto no estoque geral caso a inserção na loja falhe
+                            shopping.insereProdutoEstoque(produtoParaInserir);
+                            System.out.println("Erro ao inserir o produto na loja.");
+                        }
+                    } else {
+                        System.out.println("Erro ao remover o produto do estoque geral.");
                     }
                     break;
 
 
                 //REMOVE UM PRODUTO DE UMA LOJA
+                case 6:
+                    if (shopping == null) {
+                        System.out.println("Nenhum shopping criado.");
+                        break;
+                    }
+                    String nomeLojaParaRemoverProduto = Teclado.leString("Digite o nome da loja: ");
+                    Loja lojaParaRemoverProduto = null;
+                    for (Loja lojaShopping : shopping.getLojas()) {
+                        if (lojaShopping != null && lojaShopping.getNome().equalsIgnoreCase(nomeLojaParaRemoverProduto)) {
+                            lojaParaRemoverProduto = lojaShopping;
+                            break;
+                        }
+                    }
+                    if (lojaParaRemoverProduto == null) {
+                        System.out.println("Loja não encontrada.");
+                        break;
+                    }
+                    String nomeProdutoParaRemover = Teclado.leString("Digite o nome do produto: ");
+                    if (lojaParaRemoverProduto.removeProduto(nomeProdutoParaRemover)) {
+                        System.out.println("Produto removido da loja com sucesso!");
+                    } else {
+                        System.out.println("Erro ao remover o produto da loja.");
+                    }
+                    break;
+
+                //LISTAR TODAS AS LOJAS DE UM SHOPPING
                 case 7:
 
-                    String nomeShoppingRemoveProduto = Teclado.leString("Digite o nome do shopping na qual a loja está inserida: ");
-                    String nomeLojaParaRemoverProduto = Teclado.leString("Digite o nome da loja em que quer remover um produto: ");
-                    String nomeProdutoRemoverLoja = Teclado.leString("Digite o nome do produto que quer remover: ");
-
-
-                    if(shopping != null && shopping.getLojas() != null){ //Verifica se há um shopping e há, pelo menos, uma loja no seu array de lojas
-                        if(shopping.getNome().equalsIgnoreCase(nomeShoppingRemoveProduto)){ //Verifica se há um shopping com o nome almejado
-                            boolean produtoRemovido = false;
-
-                            //Percorre as lojas do shopping
-                            for (Loja buscaLojaRemover : shopping.getLojas()) { //Acessa o objeto de escopo local buscaLojaRemover em cada índice do array lojas (do shopping)
-                                //Varrer as lojas do shopping procurando por seu nome
-                                if (buscaLojaRemover != null && buscaLojaRemover.getNome().equalsIgnoreCase(nomeLojaParaRemoverProduto))
-                                    if (buscaLojaRemover.removeProduto(nomeProdutoRemoverLoja)) {
-                                        System.out.println("Produto removido com sucesso da loja.");
-                                        produtoRemovido = true;
-                                    } else
-                                        System.out.println("Produto não encontrado na loja");
-                                break; //assumindo que não há lojas com nome duplicado
-                            }
-                            if(!produtoRemovido)
-                                System.out.println("Loja não encontrada.");
-
-
-                        } else
-                            System.out.println("Shopping não encontrado.");
-
-
-                    } else
-                        System.out.println("Shopping não inicializado corretamente ou sem lojas cadastradas no shopping.");
+                    if (shopping == null) {
+                        System.out.println("Nenhum shopping criado.");
+                        break;
+                    }
+                    for (Loja lojaListarShopping : shopping.getLojas()) {
+                        if (lojaListarShopping != null) {
+                            System.out.println(lojaListarShopping.getNome() + " | ");
+                        }
+                    }
                     break;
 
                 //LISTA TODOS OS PRODUTOS DO ESTOQUE GERAL DO SHOPPING
@@ -344,12 +356,27 @@ public class Principal_Menu_Completo {
                 //IMPRIME RELATÓRIO DO SHOPPING
                 case 10:
 
-                    /**
+                    System.out.println("\n---------------- RESUMO ----------------------");
+                    if (shopping != null){
+                        System.out.println("\nEssas são as inforações do Shopping criado no sistema: ");
+                        System.out.println(shopping);
+                    } else {
+                        System.out.println("\n[x] Nenhum Shopping criado [x]");
+                    }
 
+                    if (loja != null ) {
+                        System.out.println("\nEssas são as informações do produto criado no sistema");
+                        System.out.println(loja);
+                    } else {
+                        System.out.println("\n[x] Nenhum produto criado [x]");
+                    }
 
-
-
-                     **/
+                    if (produto != null ) {
+                        System.out.println("\nEssas são as informações do produto criado no sistema");
+                        System.out.println(produto);
+                    } else {
+                        System.out.println("\n[x] Nenhum produto criado [x]");
+                    }
 
                 //SAI DO PROGRAMA
                 case 11:
@@ -361,35 +388,7 @@ public class Principal_Menu_Completo {
 
         }
 
-        System.out.println("\n---------------- RESUMO ----------------------");
-        if (shopping != null){
-            System.out.println("\nEssas são as inforações do Shopping criado no sistema: ");
-            System.out.println(shopping);
-        } else {
-            System.out.println("\n[x] Nenhum Shopping criado [x]");
-        }
 
-        if (loja != null ) {
-            System.out.println("\nEssas são as informações da(s) loja(s) criada(s) no sistema: ");
-            for (int num = 0; i < shopping.getLojas().length; num++) {
-                if (shopping.getLojas()[num] != null) {
-                    System.out.println("Os produtos da loja " + shopping.getLojas()[num].getNome() + "são: ");
-                    shopping.getLojas()[num].imprimeProdutos();
-                }
-            }
-
-
-            System.out.println(loja);
-        } else{
-            System.out.println("\n[x] Nenhuma loja criada [x]");
-        }
-
-        if (produto != null ) {
-            System.out.println("\nEssas são as informações do produto criado no sistema");
-            System.out.println(produto);
-        } else {
-            System.out.println("\n[x] Nenhum produto criado [x]");
-        }
 
     }
 }
