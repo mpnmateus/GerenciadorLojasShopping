@@ -30,7 +30,7 @@ public class Principal_Menu_Completo {
             System.out.println("|          (7)  Listar todas as Lojas de um Shopping                  |");
             System.out.println("|          (8)  Listar todos os Produtos do estoque geral do Shopping |");
             System.out.println("|          (9)  Listar todos os Produtos de uma Loja de um Shopping   |");
-            System.out.println("|          (10) Imprimir relatório do Shopping                        |");
+            System.out.println("|          (10) Imprimir relatório resumo do Shopping                 |");
             System.out.println("|          (11) Sair                                                  |");
             System.out.println("|_____________________________________________________________________|");
             i = Teclado.leInt("\nDigite uma opção: ");
@@ -353,7 +353,7 @@ public class Principal_Menu_Completo {
                     }
                     break;
 
-                //IMPRIME RELATÓRIO DO SHOPPING
+                //IMPRIME RELATÓRIO RESUMO DO SHOPPING
                 case 10:
 
                     System.out.println("\n---------------- RESUMO ----------------------");
