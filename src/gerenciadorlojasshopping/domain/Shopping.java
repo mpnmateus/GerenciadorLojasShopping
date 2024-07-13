@@ -57,14 +57,14 @@ public class Shopping {
     }
 
     public boolean insereProdutoEstoque(Produto p){
-        boolean achou = false;
+        boolean inseriu = false;
         for (int i = 0; i < estoqueGeralProdutos.length; i++)
             if (estoqueGeralProdutos[i] == null) {
                 estoqueGeralProdutos[i] = p;
-                achou = true;
+                inseriu = true;
                 break;
             }
-        return achou;
+        return inseriu;
     }
 
     public boolean removeProdutoEstoque(String nomeProduto){
