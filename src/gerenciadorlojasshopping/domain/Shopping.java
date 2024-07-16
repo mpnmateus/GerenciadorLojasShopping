@@ -4,11 +4,19 @@ public class Shopping {
     private String nome;
     private Endereco endereco;
     private Loja [] lojas;
+    private Produto [] estoqueGeralProdutos;
 
     public Shopping (String nome, Endereco endereco, int qntMaximaLojas){
         this.nome = nome;
         this.endereco = endereco;
         this.lojas = new Loja[qntMaximaLojas];
+    }
+
+    public Shopping (String nome, Endereco endereco, int qntMaximaLojas, int qntMaximaProdutosEstoqueGeral){
+        this.nome = nome;
+        this.endereco = endereco;
+        this.lojas = new Loja[qntMaximaLojas];
+        this.estoqueGeralProdutos = new Produto[qntMaximaProdutosEstoqueGeral];
     }
 
     public boolean insereLoja(Loja loja){
@@ -23,10 +31,48 @@ public class Shopping {
     }
 
     public boolean removeLoja(String nomeLoja){
+        int contadorLoja = 0;
         boolean removeu = false;
+
+        //Contar quantas lojas são null
+        for (int i = 0; i < lojas.length; i++){
+            if (lojas[i] == null)
+                contadorLoja++;
+        }
+
+        //Verificar se todas lojas são null
+        if (contadorLoja == lojas.length){
+            System.out.println("Sem lojas cadastradas");
+            return removeu;
+        }
+
+        //Remover Loja
         for (int i = 0; i < lojas.length; i++)
-            if (lojas[i].getNome().equalsIgnoreCase(nomeLoja)){
+            if (lojas[i] != null && lojas[i].getNome().equalsIgnoreCase(nomeLoja)){
                 lojas[i] = null;
+                removeu = true;
+                break;
+            }
+        return removeu;
+    }
+
+    public boolean insereProdutoEstoque(Produto p){
+        boolean inseriu = false;
+        for (int i = 0; i < estoqueGeralProdutos.length; i++)
+            if (estoqueGeralProdutos[i] == null) {
+                estoqueGeralProdutos[i] = p;
+                inseriu = true;
+                break;
+            }
+        return inseriu;
+    }
+
+    public boolean removeProdutoEstoque(String nomeProduto){
+        boolean removeu = false;
+        // Remover o produto
+        for (int i = 0; i < estoqueGeralProdutos.length; i++)
+            if (estoqueGeralProdutos[i] != null && estoqueGeralProdutos[i].getNome().equalsIgnoreCase(nomeProduto)){
+                estoqueGeralProdutos[i] = null;
                 removeu = true;
                 break;
             }
@@ -40,27 +86,27 @@ public class Shopping {
         if (tipoLoja.equalsIgnoreCase("Alimentacao")){
             tipoValido = true;
             for (int i = 0; i < lojas.length; i++)
-                if (lojas[i] instanceof Alimentacao)
+                if (lojas[i] != null && lojas[i] instanceof Alimentacao)
                     qntLojas++;
         } else if (tipoLoja.equalsIgnoreCase("Bijuteria")) {
             tipoValido = true;
             for (int i = 0; i < lojas.length; i++)
-                if (lojas[i] instanceof Bijuteria)
+                if (lojas[i] != null && lojas[i] instanceof Bijuteria)
                     qntLojas++;
         } else if (tipoLoja.equalsIgnoreCase("Cosmetico")) {
             tipoValido = true;
             for (int i = 0; i < lojas.length; i++)
-                if (lojas[i] instanceof Cosmetico)
+                if (lojas[i] != null && lojas[i] instanceof Cosmetico)
                     qntLojas++;
         } else if (tipoLoja.equalsIgnoreCase("Informatica")) {
             tipoValido = true;
             for (int i = 0; i < lojas.length; i++)
-                if (lojas[i] instanceof Informatica)
+                if (lojas[i] != null && lojas[i] instanceof Informatica)
                     qntLojas++;
         }  else if (tipoLoja.equalsIgnoreCase("Vestuario")) {
             tipoValido = true;
             for (int i = 0; i < lojas.length; i++)
-                if (lojas[i] instanceof Vestuario)
+                if (lojas[i] != null && lojas[i] instanceof Vestuario)
                     qntLojas++;
         }
         if (!tipoValido)
@@ -101,4 +147,7 @@ public class Shopping {
 
     public Loja[] getLojas() { return lojas; }
     public void setLojas(Loja[] lojas) { this.lojas = lojas; }
+
+    public Produto[] getEstoqueGeralProdutos() { return estoqueGeralProdutos; }
+    public void setEstoqueGeralProdutos(Produto[] estoqueGeralProdutos) { this.estoqueGeralProdutos = estoqueGeralProdutos; }
 }

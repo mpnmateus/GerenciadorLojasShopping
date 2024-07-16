@@ -100,9 +100,23 @@ public class Loja {
     }
 
     public boolean removeProduto(String nomeProduto){
+        int contadorProdutos = 0;
         boolean removeu = false;
+
+        // Contar quantos produtos são null
         for (int i = 0; i < estoqueProdutos.length; i++)
-            if (estoqueProdutos[i].getNome().equalsIgnoreCase(nomeProduto)){
+            if (estoqueProdutos[i] == null)
+                contadorProdutos += 1;
+
+        // Verificar se todos os produtos são null
+        if (contadorProdutos == estoqueProdutos.length) {
+                System.out.println("Sem produtos cadastrados no estoque da loja.");
+                return removeu;
+        }
+
+        // Remover o produto
+        for (int i = 0; i < estoqueProdutos.length; i++)
+            if (estoqueProdutos[i] != null && estoqueProdutos[i].getNome().equalsIgnoreCase(nomeProduto)){
                 estoqueProdutos[i] = null;
                 removeu = true;
                 break;
